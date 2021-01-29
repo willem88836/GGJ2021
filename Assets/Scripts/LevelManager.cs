@@ -11,8 +11,9 @@ public class LevelManager : MonoBehaviour
 
 	// TODO: change this to the proper UI items.
 	[Header("References")]
+	[SerializeField] private ScoreSlider scoreBoard;
+
 	[SerializeField] private Text timeField;
-	[SerializeField] private Text scoreField;
 	[SerializeField] private Text levelField;
 	[SerializeField] private Text strikeField;
 
@@ -23,6 +24,16 @@ public class LevelManager : MonoBehaviour
 	private int score;
 	private int strikes;
 	private int level;
+
+	private int scoreGoal
+	{
+		get
+		{
+			return (int)(level > levelScore.length
+			? levelScore.Evaluate(levelScore.length)
+			: levelScore.Evaluate(level));
+		}
+	}
 
 
 	private void Start()
@@ -45,6 +56,8 @@ public class LevelManager : MonoBehaviour
 		totalScore = 0;
 		timeIsRunning = true;
 
+		UpdateScore();
+
 		while (timeIsRunning)
 		{
 			float time = level > levelTime.length 
@@ -59,6 +72,7 @@ public class LevelManager : MonoBehaviour
 
 			LevelEnded();
 			level++;
+			levelField.text = level.ToString();
 		}
 
 		GameOver();
@@ -69,18 +83,19 @@ public class LevelManager : MonoBehaviour
 	{
 		// TODO: level ending stuff. 
 
-		float scoreGoal = level > levelScore.length
-			? levelScore.Evaluate(levelScore.length)
-			: levelScore.Evaluate(level);
-
 		if (score < scoreGoal) {
 			DealStrike();
 		}
 
-		scoreField.text = totalScore.ToString();
+		UpdateScore();
 
 		totalScore += score;
 		score = 0;
+	}
+
+	private void UpdateScore()
+	{
+		scoreBoard.UpdateScore(score, scoreGoal);
 	}
 
 	private void DealStrike()
