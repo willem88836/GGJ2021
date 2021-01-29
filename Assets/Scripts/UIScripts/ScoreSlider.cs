@@ -5,11 +5,13 @@ public class ScoreSlider : MonoBehaviour
 {
 	[SerializeField] private Slider slider;
 	[SerializeField] private Text currentScoreText;
-	[SerializeField] private Text maxScoreText; 
+	[SerializeField] private Text maxScoreText;
+	[SerializeField] private float minSladerWidthAlpha; 
 
 	public void UpdateScore(int current, int max)
 	{
 		slider.maxValue = max;
+		slider.value = Mathf.Max(current, minSladerWidthAlpha * max);	
 		currentScoreText.text = current.ToString();
 		maxScoreText.text = max.ToString();
 	}

@@ -11,11 +11,9 @@ public class LevelManager : MonoBehaviour
 
 	// TODO: change this to the proper UI items.
 	[Header("References")]
-	[SerializeField] private ScoreSlider scoreBoard;
-
-	[SerializeField] private Text timeField;
-	[SerializeField] private Text levelField;
-	[SerializeField] private Text strikeField;
+	[SerializeField] private ScoreSlider scoreController;
+	[SerializeField] private TimeController timeController;
+	[SerializeField] private StrikeController strikeController;
 
 
 	private bool timeIsRunning;
@@ -38,6 +36,7 @@ public class LevelManager : MonoBehaviour
 
 	private void Start()
 	{
+		strikeController.SetStrikeCount(maxStrikes);
 		BeginGame();
 	}
 
@@ -57,27 +56,32 @@ public class LevelManager : MonoBehaviour
 		timeIsRunning = true;
 
 		UpdateScore();
+		strikeController.UpdateStrikes(strikes);
 
 		while (timeIsRunning)
 		{
-			float time = level > levelTime.length 
+			int time = (int)(level > levelTime.length 
 				? levelTime.Evaluate(levelTime.length) 
-				: levelTime.Evaluate(level);
+				: levelTime.Evaluate(level));
 
 			for (int currentTime = 0; currentTime < time; currentTime++)
 			{
-				timeField.text = (time - currentTime).ToString();
+				timeController.UpdateTimer(time - currentTime);
 				yield return new WaitForSeconds(1);
 			}
 
 			LevelEnded();
 			level++;
-			levelField.text = level.ToString();
 		}
 
 		GameOver();
 	}
 
+
+	private void UpdateScore()
+	{
+		scoreController.UpdateScore(score, scoreGoal);
+	}
 
 	private void LevelEnded()
 	{
@@ -93,10 +97,6 @@ public class LevelManager : MonoBehaviour
 		score = 0;
 	}
 
-	private void UpdateScore()
-	{
-		scoreBoard.UpdateScore(score, scoreGoal);
-	}
 
 	private void DealStrike()
 	{
@@ -105,7 +105,8 @@ public class LevelManager : MonoBehaviour
 
 
 		strikes++;
-		strikeField.text = strikes.ToString();
+		strikeController.UpdateStrikes(strikes);
+
 		if (strikes >= maxStrikes)
 		{
 			timeIsRunning = false;
