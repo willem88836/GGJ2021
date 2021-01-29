@@ -24,8 +24,6 @@ public class PlayerVisions : MonoBehaviour
             rot = rot * Mathf.Rad2Deg;
             Vector3 rotation = transform.rotation.eulerAngles;
             rotation.y = rot;
-            Debug.DrawLine(hitInfo.point, hitInfo.point + Vector3.up, Color.red);
-            Debug.Log(delta);
             transform.rotation = Quaternion.Euler(rotation);
         }
     }
