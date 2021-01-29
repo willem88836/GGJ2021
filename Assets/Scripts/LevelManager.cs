@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
 
 	// TODO: change this to the proper UI items.
 	[Header("References")]
-	[SerializeField] private ScoreSlider scoreController;
+	[SerializeField] private ScoreController scoreController;
 	[SerializeField] private TimeController timeController;
 	[SerializeField] private StrikeController strikeController;
 

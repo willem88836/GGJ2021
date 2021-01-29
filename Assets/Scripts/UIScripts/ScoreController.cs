@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class ScoreSlider : MonoBehaviour
+public class ScoreController : MonoBehaviour
 {
 	[SerializeField] private Slider slider;
 	[SerializeField] private Text currentScoreText;
