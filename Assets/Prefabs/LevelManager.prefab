@@ -67,4 +67,32 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  finalTime: 60
+  levelScore:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 50
+      inSlope: 0.18137206
+      outSlope: 0.18137206
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.11671154
+    - serializedVersion: 3
+      time: 50
+      value: 100
+      inSlope: 2.897718
+      outSlope: 2.897718
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.040723342
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  maxStrikes: 3
+  timeField: {fileID: 0}
+  scoreField: {fileID: 0}
+  levelField: {fileID: 0}
+  strikeField: {fileID: 0}
