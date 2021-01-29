@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Security.Cryptography;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -11,9 +10,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float deceleration;
     [SerializeField] private float maxSpeed;
 
-    
     private Rigidbody body;
-
 
     private void Awake()
     {

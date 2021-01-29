@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class PlayerVisions : MonoBehaviour
 {
-    [SerializeField] LayerMask floorMask;
+    [SerializeField] private LayerMask floorMask;
 
     // Update is called once per frame
     private void Update()
