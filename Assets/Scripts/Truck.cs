@@ -24,11 +24,14 @@ public class Truck : MonoBehaviour
 	float _nextYeet = 0.2f; // is probably in a gamemanager or something
 
 	float timer = -1;
+	int _currentPhase = 0;
 
 	void Start()
 	{
 		_startPosition = transform.position;
 		_yeetPosition = transform.position + Vector3.right * _moveRange;
+
+		_moveTime = 1 / _moveTime;
 	}
 
 	void Update()
@@ -38,39 +41,46 @@ public class Truck : MonoBehaviour
 			StartNextRound();
 		}
 
-		if (timer >= 0)
-			timer += Time.deltaTime;
-
-		MoveIn();
-		YeetPhase();
-		MoveOut();
+		if (_currentPhase == 1)
+			MoveIn();
+		if (_currentPhase == 2)
+			YeetPhase();
+		if (_currentPhase == 3)
+			MoveOut();
 	}
 
 	public void StartNextRound()
 	{
-		timer = 0;
+		_currentPhase++;
 	}
 
 	void MoveIn()
 	{
-		if (timer >= 0 && timer < _moveTime)
+		timer += Time.deltaTime * _moveTime;
+		transform.position = Vector3.Lerp(_startPosition, _yeetPosition, timer);
+
+		if (timer > 1)
 		{
-			transform.position = Vector3.Lerp(_startPosition, _yeetPosition, timer);
+			timer = 0;
+			_currentPhase++;
 		}
 	}
 
 	void YeetPhase()
 	{
-		if (timer >= _moveTime &&
-			timer < _moveTime + _yeetTime)
-		{
-			_nextYeet -= Time.deltaTime;
+		_nextYeet -= Time.deltaTime;
 
-			if (_nextYeet <= 0)
-			{
-				_nextYeet = 0.2f;
-				Yeet();
-			}
+		if (_nextYeet <= 0)
+		{
+			_nextYeet = 0.2f;
+			Yeet();
+		}
+
+		timer += Time.deltaTime;
+		if (timer > _yeetTime)
+		{
+			timer = 0;
+			_currentPhase++;
 		}
 	}
 
@@ -93,15 +103,13 @@ public class Truck : MonoBehaviour
 
 	void MoveOut()
 	{
-		if (timer > _moveTime + _yeetTime &&
-			timer < _moveTime + _yeetTime + _moveTime)
+		timer += Time.deltaTime * _moveTime;
+		transform.position = Vector3.Lerp(_yeetPosition, _startPosition, timer);
+
+		if (timer > 1)
 		{
-			transform.position = Vector3.Lerp(_yeetPosition, _startPosition, timer - _moveTime - _yeetTime);
+			timer = 0;
+			_currentPhase = 0;
 		}
-
-		if (timer >= _moveTime + _yeetTime + _moveTime)
-			timer = -1;
 	}
-
-	
 }
