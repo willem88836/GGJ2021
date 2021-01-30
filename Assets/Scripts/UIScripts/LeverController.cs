@@ -11,7 +11,15 @@ public class LeverController : MonoBehaviour
     {
         string sLevel = level.ToString();
         int q = int.Parse(sLevel[sLevel.Length - 1].ToString());
-        string ext = extentions[q];
+        string ext; 
+        if (q < extentions.Length)
+        {
+            ext = extentions[q];
+        }
+        else
+        {
+            ext = "th";
+        }
         string o = level + ext + fillerText;
         textField.text = o;
     }
