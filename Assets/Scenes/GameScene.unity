@@ -2162,8 +2162,6 @@ MonoBehaviour:
     _priority: 3
   - _pool: {fileID: 1809595785}
     _priority: 3
-  expiredMailPool: {fileID: 0}
-  expiredPackagePool: {fileID: 0}
   spawnDelay: 0.01
   spawnCount: 20
   spawnForce: {x: 20, y: 70}
@@ -5249,11 +5247,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1126046324}
     m_Modifications:
-    - target: {fileID: 1852179007435201974, guid: 923776d937d7fd7419ae26413cec55a2,
-        type: 3}
-      propertyPath: playerEquipment.Array.size
-      value: 2
-      objectReference: {fileID: 0}
     - target: {fileID: 2862171097101109150, guid: 923776d937d7fd7419ae26413cec55a2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5313,16 +5306,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6201950423390399570, guid: 923776d937d7fd7419ae26413cec55a2,
-        type: 3}
-      propertyPath: equipKey
-      value: 49
-      objectReference: {fileID: 0}
-    - target: {fileID: 6201950423390399571, guid: 923776d937d7fd7419ae26413cec55a2,
-        type: 3}
-      propertyPath: equipKey
-      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 923776d937d7fd7419ae26413cec55a2, type: 3}
