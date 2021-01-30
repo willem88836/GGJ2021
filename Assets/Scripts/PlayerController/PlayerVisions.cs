@@ -5,6 +5,13 @@ public class PlayerVisions : MonoBehaviour
 {
     [SerializeField] private LayerMask floorMask;
 
+    private Vector3 mouseWorldPoint; 
+
+    public Vector3 GetMouseWorldPoint()
+    {
+        return mouseWorldPoint;
+    }
+
     // Update is called once per frame
     private void Update()
     {
@@ -13,13 +20,14 @@ public class PlayerVisions : MonoBehaviour
 
     private void Rotate()
     {
-        Vector3 mouse = Input.mousePosition;
-        Ray r = Camera.main.ScreenPointToRay(mouse);
+        mouseWorldPoint = Input.mousePosition;
+        Ray r = Camera.main.ScreenPointToRay(mouseWorldPoint);
 
         RaycastHit hitInfo; 
         if (Physics.Raycast(r, out hitInfo, float.PositiveInfinity, floorMask))
         {
-            Vector3 delta = hitInfo.point - transform.position;
+            mouseWorldPoint = hitInfo.point;
+            Vector3 delta = mouseWorldPoint - transform.position;
             float rot = (float)Math.Atan2(delta.x, delta.z);
             rot = rot * Mathf.Rad2Deg;
             Vector3 rotation = transform.rotation.eulerAngles;
