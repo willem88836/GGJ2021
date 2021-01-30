@@ -2,6 +2,8 @@
 
 public class Truck : MonoBehaviour
 {
+	[SerializeField]
+	private ObjectSpawner _spawner;
 	[SerializeField] Transform _spawnLocation;
 	[SerializeField] ObjectPool _boxPool;
 	[SerializeField] ObjectPool _mailPool;
@@ -26,6 +28,8 @@ public class Truck : MonoBehaviour
 	SpawnConfig _spawnConfig;
 	float _realYeetTime;
 	float _yeeted;
+
+	bool startedYeet = false;
 
 	void Start()
 	{
@@ -68,6 +72,20 @@ public class Truck : MonoBehaviour
 
 	void YeetPhase()
 	{
+		if (!startedYeet)
+		{
+			startedYeet = true;
+			StartCoroutine(_spawner.StartSpawnSequence());
+		}
+
+		if (!_spawner.IsSpawning)
+		{
+			timer = 0;
+			_currentPhase++;
+			startedYeet = false;
+		}
+
+		/*
 		_nextYeet -= Time.deltaTime;
 
 		if (_nextYeet <= 0)
@@ -93,6 +111,7 @@ public class Truck : MonoBehaviour
 		}
 
 		timer += Time.deltaTime;
+		*/
 	}
 
 	void Yeet(ObjectPool pool)
