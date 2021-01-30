@@ -7,7 +7,12 @@ using UnityEngine.UI;
 
 public class HighscoreManager : MonoBehaviour
 {
+	[SerializeField] GameObject _scorepanel;
+
+	[Space]
 	[SerializeField] GameObject _newScorePanel;
+	[SerializeField] Text _scoreText;
+	[SerializeField] Text _date;
 	[SerializeField] InputField _inputField;
 
 	[SerializeField] Text[] _nameTexts;
@@ -32,20 +37,30 @@ public class HighscoreManager : MonoBehaviour
 
 	void Start()
 	{
+		_scorepanel.SetActive(false);
+
 		foreach (ObjectSpawner os in _objectSpawners)
 			StartCoroutine(os.StartSpawnSequence());
 
 		_highScores = HighscoreData.LoadScores();
-		_newScore = HighscoreData.CurrentScore;
-		DisplayHighScores();
+		//_newScore = HighscoreData.CurrentScore;
+
+		_newScore = 10;
 
 		if (_newScore > _highScores[0].Score)
 			OpenNewScorePanel();
+		else
+			DisplayHighScores();
 	}
 
 	void OpenNewScorePanel()
 	{
 		_newScorePanel.SetActive(true);
+
+		_scoreText.text = _newScore.ToString();
+		string date = System.DateTime.Now.ToString();
+		string dateNoTime = date.Split(' ')[0];
+		_date.text = dateNoTime;
 	}
 
 	public void CloseNewScorePanel()
@@ -55,6 +70,7 @@ public class HighscoreManager : MonoBehaviour
 		_newScoreName = _inputField.text;
 		SetNewHighscore();
 		DisplayHighScores();
+		DisplayCurrentScore();
 	}
 
 	HighScore[] SortHighscores()
@@ -70,6 +86,8 @@ public class HighscoreManager : MonoBehaviour
 
 	void DisplayHighScores()
 	{
+		_scorepanel.SetActive(true);
+
 		for (int i = 0; i < 5; i++)
 		{
 			_nameTexts[i].text = _highScores[i].Name;
