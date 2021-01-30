@@ -43,9 +43,7 @@ public class HighscoreManager : MonoBehaviour
 			StartCoroutine(os.StartSpawnSequence());
 
 		_highScores = HighscoreData.LoadScores();
-		//_newScore = HighscoreData.CurrentScore;
-
-		_newScore = 10;
+		_newScore = HighscoreData.CurrentScore;
 
 		if (_newScore > _highScores[0].Score)
 			OpenNewScorePanel();
@@ -70,7 +68,6 @@ public class HighscoreManager : MonoBehaviour
 		_newScoreName = _inputField.text;
 		SetNewHighscore();
 		DisplayHighScores();
-		DisplayCurrentScore();
 	}
 
 	HighScore[] SortHighscores()
@@ -87,6 +84,8 @@ public class HighscoreManager : MonoBehaviour
 	void DisplayHighScores()
 	{
 		_scorepanel.SetActive(true);
+
+		DisplayCurrentScore();
 
 		for (int i = 0; i < 5; i++)
 		{
