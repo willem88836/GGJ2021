@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,7 +158,7 @@ MonoBehaviour:
   debugView: {fileID: 2063404719}
   debugMode: 1
   forceRange: 1
-  forcePower: 2
+  forcePower: 3
   upFactor: 0.2
 --- !u!1 &46916718
 GameObject:
@@ -297,7 +297,7 @@ MonoBehaviour:
   prefab: {fileID: 7846923325165863861, guid: 0efe6636f9a94d24284906ebf5532849, type: 3}
   startCount: 10
   debugMode: 1
-  debugSpawnKey: 50
+  debugSpawnKey: 0
   debugResetKey: 48
 --- !u!1 &341328603
 GameObject:
@@ -345,7 +345,7 @@ MonoBehaviour:
   prefab: {fileID: 4176578373577994552, guid: 6c509f3a01b67a44baf2a76c3708a6af, type: 3}
   startCount: 50
   debugMode: 1
-  debugSpawnKey: 49
+  debugSpawnKey: 0
   debugResetKey: 48
 --- !u!1 &395585541
 GameObject:
@@ -575,8 +575,70 @@ MonoBehaviour:
   prefab: {fileID: 2890390212243828402, guid: 5162835734cd5304a9e273e6e7c71daa, type: 3}
   startCount: 50
   debugMode: 1
-  debugSpawnKey: 49
+  debugSpawnKey: 0
   debugResetKey: 48
+--- !u!1 &700410673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700410675}
+  - component: {fileID: 700410674}
+  m_Layer: 0
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &700410674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700410673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a0680709c8dbb444b536cc7571a399d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPools:
+  - _pool: {fileID: 556083635}
+    _priority: 5
+  - _pool: {fileID: 341328605}
+    _priority: 5
+  - _pool: {fileID: 797567628}
+    _priority: 5
+  - _pool: {fileID: 1031624400}
+    _priority: 2
+  - _pool: {fileID: 1663189173}
+    _priority: 2
+  - _pool: {fileID: 78747068}
+    _priority: 2
+  spawnDelay: 0.001
+  spawnCount: 500
+  spawnForce: {x: 25, y: 75}
+  directionFactor: 0.4
+  debugMode: 1
+  spawnKey: 49
+--- !u!4 &700410675
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700410673}
+  m_LocalRotation: {x: -0.09229599, y: 0.7010574, z: 0.09229599, w: 0.7010574}
+  m_LocalPosition: {x: -17.5, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: -15, y: 90, z: 0}
 --- !u!1 &704797204
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,7 +738,7 @@ MonoBehaviour:
   prefab: {fileID: 6906968359333722463, guid: 68a4632f59eee974ab43813041dd0cc9, type: 3}
   startCount: 50
   debugMode: 1
-  debugSpawnKey: 49
+  debugSpawnKey: 0
   debugResetKey: 48
 --- !u!1 &914363504
 GameObject:
@@ -743,7 +805,7 @@ MonoBehaviour:
   prefab: {fileID: 7691646150764360341, guid: d9be5601b1a0f3c47a3e2ba78d92a968, type: 3}
   startCount: 10
   debugMode: 1
-  debugSpawnKey: 50
+  debugSpawnKey: 0
   debugResetKey: 48
 --- !u!4 &1031624401
 Transform:
@@ -1043,7 +1105,7 @@ MonoBehaviour:
   prefab: {fileID: 5359820147876647825, guid: b787151ca845c8a428406a845e82b67f, type: 3}
   startCount: 10
   debugMode: 1
-  debugSpawnKey: 50
+  debugSpawnKey: 0
   debugResetKey: 48
 --- !u!1 &1806291111
 GameObject:
