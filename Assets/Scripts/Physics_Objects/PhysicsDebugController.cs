@@ -60,7 +60,6 @@ public class PhysicsDebugController : MonoBehaviour
 
         if (Physics.Raycast(ray, out var hit))
 		{
-            Debug.Log("Debug raycast hit: " + hit.point);
             return hit.point;
 		}
 
@@ -72,8 +71,6 @@ public class PhysicsDebugController : MonoBehaviour
         var overlapObjects = Physics.OverlapSphere(point, range).Select(i => i.gameObject);
 
         var enforcableObjects = overlapObjects.Select(i => i.GetComponent<IPhysicsEnforcable>()).Where(i => i != null);
-
-        Debug.Log($"Applying force to {enforcableObjects.Count()} objects");
 
         foreach(var enforcable in enforcableObjects)
 		{
