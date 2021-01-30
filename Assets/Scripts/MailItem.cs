@@ -1,4 +1,4 @@
-﻿public enum Type { letter, cylinder, box };
+﻿public enum Type { letter, cylinder, box, baddie};
 public enum Color { Blue, Pink, Yellow, Gray };
 
 public class MailItem : SimplePooledPhysicsObject, IColorObject
@@ -6,6 +6,8 @@ public class MailItem : SimplePooledPhysicsObject, IColorObject
 	public int Points;
 	public Type type; 
 	public Color color;
+
+	public bool IsExpired { get; set; }
 
 	public int GetPoints()
 	{
@@ -19,11 +21,13 @@ public class MailItem : SimplePooledPhysicsObject, IColorObject
 
 	public Color GetColor()
 	{
-		return color;
+		return IsExpired ? Color.Gray : color;
 	}
 
 	public void Expire()
 	{
+		IsExpired = true;
+
 		transform.GetChild(0).gameObject.SetActive(false);
 		transform.GetChild(1).gameObject.SetActive(true);
 	}
@@ -32,6 +36,8 @@ public class MailItem : SimplePooledPhysicsObject, IColorObject
 	{
 		transform.GetChild(0).gameObject.SetActive(true);
 		transform.GetChild(1).gameObject.SetActive(false);
+
+		IsExpired = false;
 	}
 
 	public override void Activate()

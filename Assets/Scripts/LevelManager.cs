@@ -16,6 +16,7 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private ScoreController scoreController;
 	[SerializeField] private TimeController timeController;
 	[SerializeField] private StrikeController strikeController;
+	[SerializeField] private LeverController levelController;
 	[SerializeField] private Hatch[] hatches;
 	[SerializeField] private Truck truck;
 
@@ -64,6 +65,7 @@ public class LevelManager : MonoBehaviour
 		while (timeIsRunning)
 		{
 			LevelStarted();
+			levelController.UpdateLevel(level + 2);
 
 			int time = levelTime.SafeEvaluate(level);
 
@@ -89,8 +91,6 @@ public class LevelManager : MonoBehaviour
 			level++;
 
 			yield return new WaitForSeconds(restartLevelDelay);
-
-			truck._spawner.ExpireMail();
 		}
 
 		GameOver();
@@ -112,6 +112,7 @@ public class LevelManager : MonoBehaviour
 	{
 		int mailCount = mailCurve.SafeEvaluate(level);
 		truck.StartNextRound(mailCount);
+
 	}
 
 	private void LevelEnded()

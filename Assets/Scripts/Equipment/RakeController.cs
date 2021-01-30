@@ -67,7 +67,10 @@ public class RakeController : MonoBehaviour, IEquipment
             var colorObject = i.GetComponent<IColorObject>();
             if (colorObject == null) return true;
 
-            return i.GetComponent<IColorObject>().GetColor() == color;
+            var objectColor = i.GetComponent<IColorObject>().GetColor();
+
+            // Also always rake gray items
+            return objectColor == Color.Gray || objectColor == color;
         });
 
         var enforcableObjects = filteredObjects.Select(i => i.GetComponent<IPhysicsEnforcable>()).Where(i => i != null);
@@ -95,7 +98,10 @@ public class RakeController : MonoBehaviour, IEquipment
             var colorObject = i.GetComponent<IColorObject>();
             if (colorObject == null) return true;
 
-            return i.GetComponent<IColorObject>().GetColor() == color;
+            var objectColor = i.GetComponent<IColorObject>().GetColor();
+
+            // Also always rake gray items
+            return  objectColor == Color.Gray || objectColor == color;
         });
 
         var enforcableObjects = filteredObjects.Select(i => i.GetComponent<IPhysicsEnforcable>()).Where(i => i != null);

@@ -73,20 +73,20 @@ MonoBehaviour:
     - serializedVersion: 3
       time: 0
       value: 30
-      inSlope: 2.506327
-      outSlope: 2.506327
-      tangentMode: 0
+      inSlope: 2.3333333
+      outSlope: 2.3333333
+      tangentMode: 34
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.043319833
+      outWeight: 0.33333334
     - serializedVersion: 3
       time: 30
       value: 100
-      inSlope: 2.897718
-      outSlope: 2.897718
-      tangentMode: 0
+      inSlope: 2.3333333
+      outSlope: 2.3333333
+      tangentMode: 34
       weightedMode: 0
-      inWeight: 0.040723342
+      inWeight: 0.33333334
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -121,10 +121,11 @@ MonoBehaviour:
   scoreController: {fileID: 0}
   timeController: {fileID: 0}
   strikeController: {fileID: 0}
+  levelController: {fileID: 0}
   hatches:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   truck: {fileID: 0}
-  debugMode: 0
-  skipTimeKey: 0
+  debugMode: 1
+  skipTimeKey: 27

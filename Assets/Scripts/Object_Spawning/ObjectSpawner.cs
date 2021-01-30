@@ -125,7 +125,11 @@ public class ObjectSpawner : MonoBehaviour
 				if (poolable.IsActivePoolObject)
 				{
 					MailItem mi = poolable.GetGameObject().GetComponent<MailItem>();
-					mi.Expire();
+
+					if(mi.GetType() != Type.baddie)
+					{
+						mi.Expire();
+					}
 				}
 			});
 		}

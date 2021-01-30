@@ -76,7 +76,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 1
-  m_Text: 'Next Delivery In:'
+  m_Text: 'xth Delivery In:'
 --- !u!1 &9148956623914582947
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,6 +87,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9148956623914582944}
   - component: {fileID: 9148956623914582945}
+  - component: {fileID: 1856696262}
   m_Layer: 0
   m_Name: Timer
   m_TagString: Untagged
@@ -122,6 +123,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeField: {fileID: 9148956625643654343}
+--- !u!114 &1856696262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9148956623914582947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45da83e3f8990204fa93c3de1b515307, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fillerText: ' Delivery In:'
+  textField: {fileID: 8108321100065219326}
+  extentions:
+  - th
+  - st
+  - nd
+  - rd
+  - th
+  - th
+  - th
+  - th
+  - th
+  - th
 --- !u!1 &9148956624589757054
 GameObject:
   m_ObjectHideFlags: 0
