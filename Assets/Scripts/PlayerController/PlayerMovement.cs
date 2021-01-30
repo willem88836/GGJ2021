@@ -36,33 +36,6 @@ public class PlayerMovement : MonoBehaviour
         var inputDirection = (horizontalInput + verticalInput).normalized;
         var inputVelocity = inputDirection * speed;
 
-        //rigidBody.velocity = inputVelocity;
-
         rigidBody.velocity = Vector3.SmoothDamp(rigidBody.velocity, inputVelocity, ref dampVelocity, dampTime);
-
-        /*
-        hor_acc = CappedInterpolate(hor_acc, maxSpeed, vel.x);
-        ver_acc = CappedInterpolate(ver_acc, maxSpeed, vel.z);
-        */
-
-        //this.body.AddForce(horizontalInput, 0, ver_acc);
     }
-
-    /*
-    private float CappedInterpolate(float acc, float cap, float vel)
-    {
-        if (Math.Abs(vel) >= cap && Math.Sign(vel) == Math.Sign(acc))
-        {
-            return 0;
-        } 
-        else if (acc == 0 && Math.Abs(vel) > Mathf.Epsilon)
-        {
-            return deceleration * -Mathf.Sign(vel);
-        }
-        else
-        {
-            return acc; 
-        }
-    }
-    */
 }

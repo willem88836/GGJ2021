@@ -1,53 +1,39 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(PlayerVisions))]
-public class RakeController : MonoBehaviour
+public class RakeController : MonoBehaviour, IEquipment
 {
+    [SerializeField]
+    PlayerVisions playerVisions;
+
+    [SerializeField] 
+    GameObject visual;
+
+    [SerializeField]
+    KeyCode equipKey;
+
+    [Space]
     [SerializeField] 
     private float rakeRange;
+
     [SerializeField]
     private ushort forceRange;
+
     [SerializeField]
     private ushort forcePower;
+
     [SerializeField]
     private float upFactor;
+
     [SerializeField] 
-    OscillatorAnimation rake;
+    OscillatorAnimation animatedVisual;
 
     [SerializeField]
     private float cooldownTime;
 
-    private PlayerVisions playerVisions;
-
     private bool isOnCooldown;
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        playerVisions = gameObject.GetComponent<PlayerVisions>();
-    }
-
-    private void Update()
-    {
-        if (!isOnCooldown)
-		{
-            // Left mouse for push
-            if (Input.GetMouseButtonDown(0))
-			{
-                PushObjects();
-                StartCoroutine(StartCooldown());
-			}
-
-            // Right mouse for pull
-            if (Input.GetMouseButtonDown(1))
-            {
-                PullObjects();
-                StartCoroutine(StartCooldown());
-            }
-        }
-    }
 
     private IEnumerator StartCooldown()
 	{
@@ -56,10 +42,9 @@ public class RakeController : MonoBehaviour
 
         isOnCooldown = true;
 
-        rake.ToggleAnimation(true);
         yield return new WaitForSeconds(cooldownTime);
-        rake.ToggleAnimation(false);
 
+        animatedVisual.ToggleAnimation(false);
         isOnCooldown = false;
 	}
 
@@ -100,5 +85,62 @@ public class RakeController : MonoBehaviour
             direction = (direction + Vector3.up * upFactor).normalized;
             enforcable.EnforceForce(direction, forcePower);
         }
+    }
+
+    public KeyCode GetEquipKey()
+	{
+        return equipKey;
+	}
+
+    public IEnumerable<KeyCode> GetActionKeys()
+    {
+        yield return KeyCode.Mouse0;
+        yield return KeyCode.Mouse1;
+    }
+
+    public bool CanDoAction()
+    {
+        // Can always do an action
+        return !isOnCooldown;
+    }
+
+    public void DoAction(KeyCode key)
+    {
+        if (key == KeyCode.Mouse0)
+        {
+            PushObjects();
+        }
+        else if (key == KeyCode.Mouse1)
+        {
+            PullObjects();
+        }
+
+        StartCoroutine(StartCooldown());
+        animatedVisual.ToggleAnimation(true);
+    }
+
+    public void NoAction()
+    {
+        // Not implemented
+    }
+
+    public void DoFixedAction(KeyCode key)
+    {
+        // Not implemented
+    }
+
+    public void NoFixedAction()
+    {
+        // Not implemented
+    }
+
+    public void Equip()
+    {
+        if (!visual.activeSelf) visual.SetActive(true);
+    }
+
+    public void Unequip()
+    {
+        if (visual.activeSelf) visual.SetActive(false);
     }
 }
