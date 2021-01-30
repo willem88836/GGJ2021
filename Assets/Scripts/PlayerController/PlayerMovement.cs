@@ -15,6 +15,10 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     float dampTime;
 
+    [Space]
+    [SerializeField]
+    PlayerAnimator animator;
+
     private Rigidbody rigidBody;
     Vector3 dampVelocity;
 
@@ -34,6 +38,16 @@ public class PlayerMovement : MonoBehaviour
         var verticalInput = Input.GetAxisRaw(verticalKey) * Vector3.forward;
 
         var inputDirection = (horizontalInput + verticalInput).normalized;
+
+        if (inputDirection != Vector3.zero)
+        {
+            animator.Move();
+        }
+        else
+		{
+            animator.Idle();
+		}
+
         var inputVelocity = inputDirection * speed;
 
         rigidBody.velocity = Vector3.SmoothDamp(rigidBody.velocity, inputVelocity, ref dampVelocity, dampTime);

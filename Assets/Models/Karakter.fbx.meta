@@ -1,0 +1,179 @@
+fileFormatVersion: 2
+guid: d6bbd0809d735414d87001d833394678
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: Body
+    100002: FootL
+    100004: FootR
+    100006: HandL
+    100008: HandR
+    100010: Head
+    100012: //RootNode
+    100014: Leye
+    100016: Pet
+    100018: REye
+    100020: Snor
+    100022: Wenkbrauwen
+    400000: Body
+    400002: FootL
+    400004: FootR
+    400006: HandL
+    400008: HandR
+    400010: Head
+    400012: //RootNode
+    400014: Leye
+    400016: Pet
+    400018: REye
+    400020: Snor
+    400022: Wenkbrauwen
+    2100000: Hat M
+    2100002: BrownM
+    2100004: HandsM
+    2100006: No Name
+    2100008: Rim M
+    2300000: Body
+    2300002: FootL
+    2300004: FootR
+    2300006: HandL
+    2300008: HandR
+    2300010: Head
+    2300012: Leye
+    2300014: Pet
+    2300016: REye
+    2300018: Snor
+    2300020: Wenkbrauwen
+    3300000: Body
+    3300002: FootL
+    3300004: FootR
+    3300006: HandL
+    3300008: HandR
+    3300010: Head
+    3300012: Leye
+    3300014: Pet
+    3300016: REye
+    3300018: Snor
+    3300020: Wenkbrauwen
+    4300000: Body
+    4300002: Head
+    4300004: Leye
+    4300006: Snor
+    4300008: Wenkbrauwen
+    4300010: Pet
+    4300012: HandL
+    4300014: HandR
+    4300016: FootR
+    4300018: FootL
+    4300020: REye
+    7400000: HandL|Cube.001Action
+    7400002: HandL|FootLAction
+    7400004: HandL|Leye.001Action
+    7400006: HandL|Sphere.001Action
+    7400008: HandL|SphereAction
+    7400010: HandR|Cube.001Action
+    7400012: HandR|FootLAction
+    7400014: HandR|Leye.001Action
+    7400016: HandR|Sphere.001Action
+    7400018: HandR|SphereAction
+    7400020: FootR|Cube.001Action
+    7400022: FootR|FootLAction
+    7400024: FootR|Leye.001Action
+    7400026: FootR|Sphere.001Action
+    7400028: FootR|SphereAction
+    7400030: FootL|Cube.001Action
+    7400032: FootL|FootLAction
+    7400034: FootL|Leye.001Action
+    7400036: FootL|Sphere.001Action
+    7400038: FootL|SphereAction
+    7400040: REye|Cube.001Action
+    7400042: REye|FootLAction
+    7400044: REye|Leye.001Action
+    7400046: REye|Sphere.001Action
+    7400048: REye|SphereAction
+    9500000: //RootNode
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 0
+    normalImportMode: 1
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

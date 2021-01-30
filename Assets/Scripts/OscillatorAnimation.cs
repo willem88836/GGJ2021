@@ -8,6 +8,7 @@ public class OscillatorAnimation : MonoBehaviour
 
 
     [SerializeField] private bool isAnimating;
+    [SerializeField] private float progressOffset;
     private float progress;
 
     private Vector3 pivot;
@@ -41,7 +42,7 @@ public class OscillatorAnimation : MonoBehaviour
     {
         if (isAnimating != toggle)
         {
-            progress = 0;
+            progress = progressOffset;
             isAnimating = toggle;
             UpdateAnimation();
         }
