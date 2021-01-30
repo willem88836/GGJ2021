@@ -91,10 +91,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _post: {fileID: 443103220960131777, guid: c66ddaa9dc9d17e439f5f65164b3975d, type: 3}
-  _spawnLocation: {x: 0, y: 0, z: 0}
+  _spawnLocation: {fileID: 0}
+  _boxPool: {fileID: 0}
+  _mailPool: {fileID: 0}
   _moveTime: 1
   _moveRange: 10
-  _yeetTime: 1
+  _yeetInterval: 0.2
   _yeetSpread: 1
   _yeetpowerMin: 1
   _yeetpowerMax: 1

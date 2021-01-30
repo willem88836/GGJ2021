@@ -6,6 +6,8 @@ public class LevelManager : MonoBehaviour
 	[Header("Settings")]
 	[SerializeField] private AnimationCurve levelTime;
 	[SerializeField] private AnimationCurve levelScore;
+	[SerializeField] private AnimationCurve packages;
+	[SerializeField] private AnimationCurve letters;
 	[SerializeField] private int maxStrikes = 3;
 	[SerializeField] private int restartLevelDelay;
 
@@ -25,15 +27,6 @@ public class LevelManager : MonoBehaviour
 	private int strikes;
 	private int level;
 
-	private int scoreGoal
-	{
-		get
-		{
-			return (int)(level > levelScore.length
-			? levelScore.Evaluate(levelScore.length)
-			: levelScore.Evaluate(level));
-		}
-	}
 
 
 	private void Start()
@@ -86,17 +79,23 @@ public class LevelManager : MonoBehaviour
 
 	private void UpdateScore()
 	{
-		scoreController.UpdateScore(score, scoreGoal);
+		scoreController.UpdateScore(score, levelScore.SafeEvaluate(level));
 	}
 
 	private void LevelStarted()
 	{
-		truck.StartNextRound();
+		SpawnConfig spawnConfig = new SpawnConfig()
+		{
+			letterCount = letters.SafeEvaluate(level),
+			packageCount = packages.SafeEvaluate(level)
+		};
+
+		truck.StartNextRound(spawnConfig);
 	}
 
 	private void LevelEnded()
 	{
-		if (score < scoreGoal) {
+		if (score < levelScore.SafeEvaluate(level)) {
 			DealStrike();
 		}
 

@@ -1,9 +1,12 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 public class Truck : MonoBehaviour
 {
 	[SerializeField] GameObject _post; // get from pool
-	[SerializeField] Vector3 _spawnLocation;
+	[SerializeField] Transform _spawnLocation;
+	[SerializeField] ObjectPool _boxPool;
+	[SerializeField] ObjectPool _mailPool;
 	[Space]
 
 	[SerializeField] float _moveTime;
@@ -13,7 +16,7 @@ public class Truck : MonoBehaviour
 	Vector3 _yeetPosition;
 
 	[Space]
-	[SerializeField] float _yeetTime;
+	[SerializeField] float _yeetInterval;
 	[SerializeField] float _yeetSpread;
 	[SerializeField] float _yeetpowerMin;
 	[SerializeField] float _yeetpowerMax;
@@ -22,6 +25,9 @@ public class Truck : MonoBehaviour
 
 	float timer = -1;
 	int _currentPhase = 0;
+	SpawnConfig _spawnConfig;
+	float _realYeetTime;
+	float _yeeted;
 
 	void Start()
 	{
@@ -41,8 +47,9 @@ public class Truck : MonoBehaviour
 			MoveOut();
 	}
 
-	public void StartNextRound()
+	public void StartNextRound(SpawnConfig spawnConfig)
 	{
+		_spawnConfig = spawnConfig;
 		_currentPhase++;
 	}
 
@@ -55,6 +62,9 @@ public class Truck : MonoBehaviour
 		{
 			timer = 0;
 			_currentPhase++;
+
+			_realYeetTime = _yeetInterval * (_spawnConfig.letterCount + _spawnConfig.packageCount);
+			_yeeted = 0;
 		}
 	}
 
@@ -64,19 +74,30 @@ public class Truck : MonoBehaviour
 
 		if (_nextYeet <= 0)
 		{
-			_nextYeet = 0.2f;
-			Yeet();
+			_nextYeet = _yeetInterval;
+
+			if(_yeeted < _spawnConfig.letterCount)
+			{
+				Yeet(_mailPool);
+			}
+			else
+			{
+				Yeet(_boxPool);
+			}
+
+			_yeeted++;
+			
+			if(_yeeted > (_spawnConfig.letterCount + _spawnConfig.packageCount))
+			{
+				timer = 0;
+				_currentPhase++;
+			}
 		}
 
 		timer += Time.deltaTime;
-		if (timer > _yeetTime)
-		{
-			timer = 0;
-			_currentPhase++;
-		}
 	}
 
-	void Yeet()
+	void Yeet(ObjectPool pool)
 	{
 		Vector3 direction = Vector3.right;
 
@@ -86,8 +107,10 @@ public class Truck : MonoBehaviour
 		float randomSide = Random.Range(-_yeetSpread, _yeetSpread);
 		direction += Vector3.forward * randomSide;
 
-		// TODO replace with pooling
-		GameObject go = Instantiate(_post, _spawnLocation, Quaternion.identity);
+		IObjectPoolable op = pool.GetAvailableObject();
+		op.Activate();
+		GameObject go = op.GetGameObject();
+		go.transform.position = _spawnLocation.position;
 		Rigidbody rb = go.GetComponent<Rigidbody>();
 		rb.AddForce(direction * 10, ForceMode.Impulse);
 	}
