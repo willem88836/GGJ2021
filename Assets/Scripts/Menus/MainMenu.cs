@@ -21,6 +21,11 @@ public class MainMenu : MonoBehaviour
 	[SerializeField]
 	private float fadeTime;
 
+	[SerializeField]
+	private RectTransform mainUI;
+
+	[SerializeField]
+	private RectTransform ControlUI;
 
 	private bool _isBusy;
 
@@ -37,6 +42,66 @@ public class MainMenu : MonoBehaviour
 	public void Exit()
 	{
 		Application.Quit();
+	}
+
+	public void Controls()
+	{
+		StartCoroutine(SwitchToControls());
+	}
+
+	private IEnumerator SwitchToControls()
+	{
+		if (_isBusy)
+			yield break;
+
+		_isBusy = true;
+
+		float timer = 0;
+
+		Vector3 centralPos = mainUI.position;
+		Vector3 nextUIpos = centralPos + Vector3.right * Screen.width;
+		Vector3 prevControlUIpos = centralPos - Vector3.right * Screen.width;
+
+		while (timer < switchTime)
+		{
+			timer += Time.deltaTime;
+			mainUI.position = Vector3.Lerp(centralPos, nextUIpos, timer);
+			ControlUI.position = Vector3.Lerp(prevControlUIpos, centralPos, timer);
+
+			yield return null;
+		}
+
+		_isBusy = false;
+	}
+
+	public void MainUI()
+	{
+		StartCoroutine(SwitchToMainUI());
+	}
+
+	private IEnumerator SwitchToMainUI()
+	{
+		if (_isBusy)
+			yield break;
+
+		_isBusy = true;
+
+		float timer = 0;
+
+		Vector3 centralPos = ControlUI.position;
+		Vector3 prevUIpos = centralPos + Vector3.right * Screen.width;
+		Vector3 nextControlUIpos = centralPos - Vector3.right * Screen.width;
+
+		while (timer < switchTime)
+		{
+			timer += Time.deltaTime;
+			mainUI.position = Vector3.Lerp(prevUIpos, centralPos, timer);
+			ControlUI.position = Vector3.Lerp(centralPos, nextControlUIpos, timer);
+
+			yield return null;
+		}
+
+		_isBusy = false;
 	}
 
 	private IEnumerator SwitchToSceneSequence(int nextScene)

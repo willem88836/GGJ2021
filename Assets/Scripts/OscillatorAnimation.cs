@@ -7,7 +7,7 @@ public class OscillatorAnimation : MonoBehaviour
     [SerializeField] private Transform rakeModel;
 
 
-    private bool isAnimating;
+    [SerializeField] private bool isAnimating;
     private float progress;
 
     private Vector3 pivot;
