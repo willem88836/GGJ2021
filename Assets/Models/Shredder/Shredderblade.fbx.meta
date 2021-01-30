@@ -3,20 +3,12 @@ guid: 96e54d4d4bf8f8945aaa292455da2c38
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Shredderbase
-    100002: //RootNode
-    100004: Shredderblade
-    400000: Shredderbase
-    400002: //RootNode
-    400004: Shredderblade
-    2100000: Material
-    2100002: No Name
-    2300000: Shredderbase
-    2300002: Shredderblade
-    3300000: Shredderbase
-    3300002: Shredderblade
-    4300000: Shredderbase
-    4300002: Shredderblade
+    100000: //RootNode
+    400000: //RootNode
+    2100000: No Name
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: Shredderblade
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -72,8 +64,8 @@ ModelImporter:
     previousCalculatedGlobalScale: 1
     hasPreviousCalculatedGlobalScale: 0
   tangentSpace:
-    normalSmoothAngle: 60
-    normalImportMode: 0
+    normalSmoothAngle: 0
+    normalImportMode: 1
     tangentImportMode: 3
     normalCalculationMode: 4
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
