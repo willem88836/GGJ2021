@@ -1,10 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Truck : MonoBehaviour
 {
-	[SerializeField] float _roundDuration; // is probably in a gamemanager or something
 	[SerializeField] GameObject _post; // get from pool
 	[SerializeField] Vector3 _spawnLocation;
 	[Space]
@@ -36,11 +33,6 @@ public class Truck : MonoBehaviour
 
 	void Update()
     {
-		if (Input.GetKeyDown(KeyCode.Space)) // removve when its called from another script
-		{
-			StartNextRound();
-		}
-
 		if (_currentPhase == 1)
 			MoveIn();
 		if (_currentPhase == 2)
@@ -86,8 +78,7 @@ public class Truck : MonoBehaviour
 
 	void Yeet()
 	{
-		Vector3 direction = new Vector3();
-		direction = Vector3.right;
+		Vector3 direction = Vector3.right;
 
 		float randomUp = Random.Range(0, _yeetSpread);
 		direction += Vector3.up * randomUp;

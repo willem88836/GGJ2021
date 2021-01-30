@@ -14,6 +14,8 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private ScoreController scoreController;
 	[SerializeField] private TimeController timeController;
 	[SerializeField] private StrikeController strikeController;
+	[Space]
+	[SerializeField] private Truck truck; 
 
 
 	private bool timeIsRunning;
@@ -60,6 +62,8 @@ public class LevelManager : MonoBehaviour
 
 		while (timeIsRunning)
 		{
+			LevelStarted();
+
 			int time = (int)(level > levelTime.length 
 				? levelTime.Evaluate(levelTime.length) 
 				: levelTime.Evaluate(level));
@@ -83,6 +87,11 @@ public class LevelManager : MonoBehaviour
 		scoreController.UpdateScore(score, scoreGoal);
 	}
 
+	private void LevelStarted()
+	{
+		truck.StartNextRound();
+	}
+
 	private void LevelEnded()
 	{
 		// TODO: level ending stuff. 
@@ -92,7 +101,6 @@ public class LevelManager : MonoBehaviour
 		}
 
 		UpdateScore();
-
 		totalScore += score;
 		score = 0;
 	}

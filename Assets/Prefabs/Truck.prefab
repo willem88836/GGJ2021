@@ -90,12 +90,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ef501cfac642604693e669754a6e2a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _roundDuration: 0
-  _post: {fileID: 0}
+  _post: {fileID: 443103220960131777, guid: c66ddaa9dc9d17e439f5f65164b3975d, type: 3}
   _spawnLocation: {x: 0, y: 0, z: 0}
-  _moveTime: 5
+  _moveTime: 1
   _moveRange: 10
-  _yeetTime: 0
-  _yeetSpread: 0
-  _yeetpowerMin: 0
-  _yeetpowerMax: 0
+  _yeetTime: 1
+  _yeetSpread: 1
+  _yeetpowerMin: 1
+  _yeetpowerMax: 1
