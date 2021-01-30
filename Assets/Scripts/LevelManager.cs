@@ -7,8 +7,7 @@ public class LevelManager : MonoBehaviour
 	[Header("Settings")]
 	[SerializeField] private AnimationCurve levelTime;
 	[SerializeField] private AnimationCurve levelScore;
-	[SerializeField] private AnimationCurve packages;
-	[SerializeField] private AnimationCurve letters;
+	[SerializeField] private AnimationCurve mailCurve;
 	[SerializeField] private int maxStrikes = 3;
 	[SerializeField] private int restartLevelDelay;
 	[SerializeField] private int pointCaptureDelay;
@@ -18,9 +17,11 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private TimeController timeController;
 	[SerializeField] private StrikeController strikeController;
 	[SerializeField] private Hatch[] hatches;
+	[SerializeField] private Truck truck;
 
-	[Space]
-	[SerializeField] private Truck truck; 
+	[Header("Debug")]
+	[SerializeField] private bool debugMode;
+	[SerializeField] private KeyCode skipTimeKey;
 
 
 	private bool timeIsRunning;
@@ -70,6 +71,8 @@ public class LevelManager : MonoBehaviour
 			{
 				timeController.UpdateTimer(time - currentTime);
 				yield return new WaitForSeconds(1);
+
+				if(debugMode && Input.GetKey(skipTimeKey)) break;
 			}
 
 			foreach(Hatch hatch in hatches)
@@ -102,13 +105,8 @@ public class LevelManager : MonoBehaviour
 
 	private void LevelStarted()
 	{
-		SpawnConfig spawnConfig = new SpawnConfig()
-		{
-			letterCount = letters.SafeEvaluate(level),
-			packageCount = packages.SafeEvaluate(level)
-		};
-
-		truck.StartNextRound(spawnConfig);
+		int mailCount = mailCurve.SafeEvaluate(level);
+		truck.StartNextRound(mailCount);
 	}
 
 	private void LevelEnded()

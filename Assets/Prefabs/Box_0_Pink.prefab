@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8506869928372559400}
   - component: {fileID: 2722146304956272130}
   - component: {fileID: 5245912821984188101}
-  - component: {fileID: 8709717457982545766}
   - component: {fileID: 114150405024226048}
   m_Layer: 0
   m_Name: Box_0_Pink
@@ -65,21 +64,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.4, z: 0.5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8709717457982545766
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7846923325165863861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa582ba9bf3b28a458794f8f5b9de65b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RigidBody: {fileID: 2722146304956272130}
-  Collider: {fileID: 5245912821984188101}
-  Renderer: {fileID: 4372317001482919387}
 --- !u!114 &114150405024226048
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,8 +76,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438cee32643f9ef46a8e8439b6524b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RigidBody: {fileID: 2722146304956272130}
+  Collider: {fileID: 5245912821984188101}
+  Renderer: {fileID: 4372317001482919387}
   Points: 3
-  type: 0
+  type: 2
   color: 1
 --- !u!1 &7890130933422420256
 GameObject:
