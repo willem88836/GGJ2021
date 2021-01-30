@@ -625,6 +625,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVisions: {fileID: 6620994461029931424}
   visual: {fileID: 1004614557}
+  equipKey: 49
   rakeRange: 1
   forceRange: 2
   forcePower: 25
@@ -645,6 +646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerVisions: {fileID: 6620994461029931424}
   visual: {fileID: 1409483381}
+  equipKey: 50
   pointRange: 2
   forceRange: 1
   forcePower: 2
