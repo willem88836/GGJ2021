@@ -82,7 +82,7 @@ MonoBehaviour:
   Renderer: {fileID: 3279509643527293393}
   Points: 2
   type: 1
-  color: 0
+  color: 2
 --- !u!1001 &1635094848878510989
 PrefabInstance:
   m_ObjectHideFlags: 0

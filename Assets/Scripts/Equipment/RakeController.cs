@@ -14,6 +14,9 @@ public class RakeController : MonoBehaviour, IEquipment
     [SerializeField]
     KeyCode equipKey;
 
+    [SerializeField]
+    Color color;
+
     [Space]
     [SerializeField] 
     private float rakeRange;
@@ -57,7 +60,17 @@ public class RakeController : MonoBehaviour, IEquipment
         point.y = 0;
 
         var overlapObjects = Physics.OverlapSphere(point, forceRange).Select(i => i.gameObject);
-        var enforcableObjects = overlapObjects.Select(i => i.GetComponent<IPhysicsEnforcable>()).Where(i => i != null);
+
+        // Only affect objects that have the matching color or not color information
+        var filteredObjects = overlapObjects.Where(i =>
+        {
+            var colorObject = i.GetComponent<IColorObject>();
+            if (colorObject == null) return true;
+
+            return i.GetComponent<IColorObject>().GetColor() == color;
+        });
+
+        var enforcableObjects = filteredObjects.Select(i => i.GetComponent<IPhysicsEnforcable>()).Where(i => i != null);
 
         foreach (var enforcable in enforcableObjects)
         {
@@ -75,7 +88,17 @@ public class RakeController : MonoBehaviour, IEquipment
         Vector3 point = inputDirection * rakeRange + transform.position;
 
         var overlapObjects = Physics.OverlapSphere(point, forceRange).Select(i => i.gameObject);
-        var enforcableObjects = overlapObjects.Select(i => i.GetComponent<IPhysicsEnforcable>()).Where(i => i != null);
+
+        // Only affect objects that have the matching color or not color information
+        var filteredObjects = overlapObjects.Where(i =>
+        {
+            var colorObject = i.GetComponent<IColorObject>();
+            if (colorObject == null) return true;
+
+            return i.GetComponent<IColorObject>().GetColor() == color;
+        });
+
+        var enforcableObjects = filteredObjects.Select(i => i.GetComponent<IPhysicsEnforcable>()).Where(i => i != null);
 
         foreach (var enforcable in enforcableObjects)
         {
