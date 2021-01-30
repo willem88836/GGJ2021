@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 4176578373577994555}
   - component: {fileID: 4176578373577994557}
   - component: {fileID: 4176578373577994554}
-  - component: {fileID: 1291008564508524465}
   - component: {fileID: 114405180628529964}
   m_Layer: 0
   m_Name: Letter_0_Yellow
@@ -142,21 +141,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.03, z: 0.3}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1291008564508524465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4176578373577994552}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa582ba9bf3b28a458794f8f5b9de65b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RigidBody: {fileID: 4176578373577994557}
-  Collider: {fileID: 4176578373577994554}
-  Renderer: {fileID: 1768234770801475294}
 --- !u!114 &114405180628529964
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +153,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438cee32643f9ef46a8e8439b6524b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RigidBody: {fileID: 4176578373577994557}
+  Collider: {fileID: 4176578373577994554}
+  Renderer: {fileID: 1768234770801475294}
   Points: 1
   type: 0
   color: 2

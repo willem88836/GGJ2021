@@ -93,6 +93,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438cee32643f9ef46a8e8439b6524b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RigidBody: {fileID: 3408657882973455468}
+  Collider: {fileID: 3408657882973455464}
+  Renderer: {fileID: 528348937704052090}
   Points: 2
   type: 1
   color: 0
