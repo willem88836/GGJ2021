@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ObjectSpawner : MonoBehaviour
 {
-    [SerializeField]
-    private List<SpawnPoolEntry> spawnPools;
+    [SerializeField] private List<SpawnPoolEntry> spawnPools;
+	[SerializeField] private ObjectPool expiredMailPool;
+	[SerializeField] private ObjectPool expiredPackagePool;
 
 	[Space]
 	[SerializeField]
@@ -78,6 +79,7 @@ public class ObjectSpawner : MonoBehaviour
 		for (int i = 0; i < spawnCount; i++)
 		{
 			var spawned = GetRandomObject();
+			spawned.GetGameObject().GetComponent<MailItem>().Unexpire();
 			var spawnedTransform = spawned.GetGameObject().transform;
 			var spawnedEnforcable = spawned.GetGameObject().GetComponent<IPhysicsEnforcable>();
 
@@ -106,5 +108,38 @@ public class ObjectSpawner : MonoBehaviour
 
 		spawnRoutine = StartCoroutine(SpawnSequence());
 		yield return spawnRoutine;
+	}
+
+	public void ExpireMail()
+	{
+		foreach(ObjectPool pool in _priorityList)
+		{
+			pool.Foreach((IObjectPoolable poolable) => {
+				//	poolable.Deactivate();
+				IObjectPoolable expiredPoolable; 
+				MailItem mi = poolable.GetGameObject().GetComponent<MailItem>();
+
+				mi.Expire();
+
+/*
+
+				if (mi.GetType() == Type.letter)
+				{
+					expiredPoolable = expiredMailPool.GetAvailableObject();
+				}
+				else
+				{
+					expiredPoolable = expiredPackagePool.GetAvailableObject();
+				}
+
+				expiredPoolable.Activate();
+
+				GameObject ego = expiredPoolable.GetGameObject();
+				GameObject go = expiredPoolable.GetGameObject();
+
+				ego.transform.position = go.transform.position;
+				ego.transform.rotation = go.transform.rotation;*/
+			});
+		}
 	}
 }

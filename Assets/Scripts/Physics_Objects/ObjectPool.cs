@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -85,5 +86,13 @@ public class ObjectPool : MonoBehaviour
 	public IObjectPoolable GetAvailableObject()
 	{
 		return _poolObjects.FirstOrDefault(i => !i.IsActivePoolObject) ?? SpawnObject();
+	}
+
+	public void Foreach(Action<IObjectPoolable> action)
+	{
+		foreach (IObjectPoolable poolable in _poolObjects)
+		{
+			action.Invoke(poolable);
+		}
 	}
 }

@@ -4,17 +4,23 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody))]
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private string horizontalKey = "Horizontal";
-    [SerializeField] private string verticalKey = "Vertical";
-    [SerializeField] private float acceleration;
-    [SerializeField] private float deceleration;
-    [SerializeField] private float maxSpeed;
+    [SerializeField] 
+    private string horizontalKey = "Horizontal";
+    [SerializeField] 
+    private string verticalKey = "Vertical";
+    [SerializeField] 
+    private float speed;
 
-    private Rigidbody body;
+    [Space]
+    [SerializeField]
+    float dampTime;
+
+    private Rigidbody rigidBody;
+    Vector3 dampVelocity;
 
     private void Awake()
     {
-        this.body = GetComponent<Rigidbody>();
+        rigidBody = GetComponent<Rigidbody>();
     }
 
     private void Update()
@@ -24,17 +30,25 @@ public class PlayerMovement : MonoBehaviour
 
     private void Move()
     {
-        float hor_acc = acceleration * Input.GetAxis(horizontalKey);
-        float ver_acc = acceleration * Input.GetAxis(verticalKey);
+        var horizontalInput = Input.GetAxisRaw(horizontalKey) * Vector3.right;
+        var verticalInput = Input.GetAxisRaw(verticalKey) * Vector3.forward;
 
-        Vector3 vel = this.body.velocity;
+        var inputDirection = (horizontalInput + verticalInput).normalized;
+        var inputVelocity = inputDirection * speed;
 
+        //rigidBody.velocity = inputVelocity;
+
+        rigidBody.velocity = Vector3.SmoothDamp(rigidBody.velocity, inputVelocity, ref dampVelocity, dampTime);
+
+        /*
         hor_acc = CappedInterpolate(hor_acc, maxSpeed, vel.x);
         ver_acc = CappedInterpolate(ver_acc, maxSpeed, vel.z);
+        */
 
-        this.body.AddForce(hor_acc, 0, ver_acc);
+        //this.body.AddForce(horizontalInput, 0, ver_acc);
     }
 
+    /*
     private float CappedInterpolate(float acc, float cap, float vel)
     {
         if (Math.Abs(vel) >= cap && Math.Sign(vel) == Math.Sign(acc))
@@ -50,4 +64,5 @@ public class PlayerMovement : MonoBehaviour
             return acc; 
         }
     }
+    */
 }

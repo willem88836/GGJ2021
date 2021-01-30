@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1689282827}
   - component: {fileID: 1689282828}
   m_Layer: 0
-  m_Name: LopendeBand
+  m_Name: Conveyor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
