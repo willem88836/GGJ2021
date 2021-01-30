@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
@@ -8,12 +7,13 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private AnimationCurve levelTime;
 	[SerializeField] private AnimationCurve levelScore;
 	[SerializeField] private int maxStrikes = 3;
+	[SerializeField] private int restartLevelDelay;
 
-	// TODO: change this to the proper UI items.
 	[Header("References")]
 	[SerializeField] private ScoreController scoreController;
 	[SerializeField] private TimeController timeController;
 	[SerializeField] private StrikeController strikeController;
+
 	[Space]
 	[SerializeField] private Truck truck; 
 
@@ -76,6 +76,8 @@ public class LevelManager : MonoBehaviour
 
 			LevelEnded();
 			level++;
+
+			yield return new WaitForSeconds(restartLevelDelay);
 		}
 
 		GameOver();
@@ -94,8 +96,6 @@ public class LevelManager : MonoBehaviour
 
 	private void LevelEnded()
 	{
-		// TODO: level ending stuff. 
-
 		if (score < scoreGoal) {
 			DealStrike();
 		}

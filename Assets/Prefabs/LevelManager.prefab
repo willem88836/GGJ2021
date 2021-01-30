@@ -92,7 +92,8 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   maxStrikes: 3
-  timeField: {fileID: 0}
-  scoreField: {fileID: 0}
-  levelField: {fileID: 0}
-  strikeField: {fileID: 0}
+  restartLevelDelay: 5
+  scoreController: {fileID: 0}
+  timeController: {fileID: 0}
+  strikeController: {fileID: 0}
+  truck: {fileID: 0}

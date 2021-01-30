@@ -14,7 +14,8 @@ public class StrikeController : MonoBehaviour
 		for (int i = 0; i < count; i++)
 		{
 			GameObject newChild = Instantiate(child, transform);
-			newChild.transform.localPosition = new Vector3(((float)i - count / 2f) * spacing, 0, 0);
+			float x = (i - count / 2f) * spacing;
+			newChild.transform.localPosition = new Vector3(x, 0, 0);
 			newChild.SetActive(true);
 			children[i] = newChild;
 		}
