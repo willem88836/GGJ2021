@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -142,5 +143,13 @@ public class LevelManager : MonoBehaviour
 		// TODO: game over stuff. 
 		Debug.Log("U DED");
 		Debug.Log("Score: " + totalScore);
+
+		SwitchToHighscores();
+	}
+
+	private void SwitchToHighscores()
+	{
+		HighscoreData.CurrentScore = totalScore;
+		SceneManager.LoadScene(2);
 	}
 }
