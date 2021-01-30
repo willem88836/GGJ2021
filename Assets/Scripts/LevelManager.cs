@@ -120,6 +120,8 @@ public class LevelManager : MonoBehaviour
 		UpdateScore();
 		totalScore += score;
 		score = 0;
+
+		truck._spawner.ExpireMail();
 	}
 
 
