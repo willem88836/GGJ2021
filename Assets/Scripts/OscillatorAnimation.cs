@@ -19,18 +19,8 @@ public class OscillatorAnimation : MonoBehaviour
         this.rot = this.transform.rotation;
     }
 
-    public void ToggleAnimation(bool toggle)
-    {
-        if(isAnimating != toggle)
-        {
-            progress = 0;
-            isAnimating = toggle;
-            UpdateAnimation();
-        }
-    }
-
     
-    public void Update()
+    private void Update()
     {
         if (!isAnimating)
             return;
@@ -45,5 +35,15 @@ public class OscillatorAnimation : MonoBehaviour
         float s = Mathf.Sin(progress) * radius;
         Vector3 rot = new Vector3(0, s, c);
         rakeModel.localPosition = rot;
+    }
+
+    public void ToggleAnimation(bool toggle)
+    {
+        if (isAnimating != toggle)
+        {
+            progress = 0;
+            isAnimating = toggle;
+            UpdateAnimation();
+        }
     }
 }

@@ -12,7 +12,7 @@ public class LeafBlowerController : MonoBehaviour
     [SerializeField]
     private float upFactor;
     [SerializeField]
-    OscillatorAnimation rake;
+    OscillatorAnimation animation;
 
     private PlayerVisions playerVisions;
 
@@ -29,6 +29,15 @@ public class LeafBlowerController : MonoBehaviour
     {
         leftMouseDown = Input.GetMouseButton(0);
         rightMouseDown = Input.GetMouseButton(1);
+
+        if (leftMouseDown || rightMouseDown)
+		{
+            animation.ToggleAnimation(true);
+		}
+        else
+		{
+            animation.ToggleAnimation(false);
+        }
     }
 
 	private void FixedUpdate()

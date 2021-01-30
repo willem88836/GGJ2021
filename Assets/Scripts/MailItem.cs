@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum Type { letter, box };
+public enum Type { letter, cylinder, box };
 public enum Color { Blue, Pink, Yellow, Gray };
 
 public class MailItem : MonoBehaviour
