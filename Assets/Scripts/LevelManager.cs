@@ -89,8 +89,6 @@ public class LevelManager : MonoBehaviour
 			level++;
 
 			yield return new WaitForSeconds(restartLevelDelay);
-
-			truck._spawner.ExpireMail();
 		}
 
 		GameOver();
