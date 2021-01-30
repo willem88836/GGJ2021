@@ -21,7 +21,7 @@ public class SimplePooledPhysicsObject : MonoBehaviour, IObjectPoolable, IPhysic
 
 	public bool IsActivePoolObject { get; private set; }
 
-	public void Activate()
+	public virtual void Activate()
 	{
 		if (!RigidBody.detectCollisions) RigidBody.detectCollisions = true;
 		if (RigidBody.isKinematic) RigidBody.isKinematic = false;
@@ -32,7 +32,7 @@ public class SimplePooledPhysicsObject : MonoBehaviour, IObjectPoolable, IPhysic
 		IsActivePoolObject = true;
 	}
 
-	public void Deactivate()
+	public virtual void Deactivate()
 	{
 		if (Renderer.enabled) Renderer.enabled = false;
 		if (Collider.enabled) Collider.enabled = false;

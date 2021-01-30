@@ -1025,21 +1025,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
         type: 3}
-      propertyPath: packages.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: hatches.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
       propertyPath: scoreController
       value: 
       objectReference: {fileID: 311747427}
@@ -1053,66 +1038,6 @@ PrefabInstance:
       propertyPath: strikeController
       value: 
       objectReference: {fileID: 195275812}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: truck
-      value: 
-      objectReference: {fileID: 322849415}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[1].time
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[1].value
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[1].inSlope
-      value: 10.311711
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[1].outSlope
-      value: 10.311711
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[0].value
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[1].inWeight
-      value: 0.057618637
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.data[1].time
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.data[1].value
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.data[1].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.data[1].outSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.data[0].value
-      value: 20
-      objectReference: {fileID: 0}
     - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
         type: 3}
       propertyPath: hatches.Array.data[0]
@@ -1130,19 +1055,9 @@ PrefabInstance:
       objectReference: {fileID: 956805052}
     - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
         type: 3}
-      propertyPath: levelTime.m_Curve.Array.data[0].value
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: restartLevelDelay
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelTime.m_Curve.Array.data[0].time
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: truck
+      value: 
+      objectReference: {fileID: 322849415}
     - target: {fileID: 996741091808439561, guid: 09930f478c05e4f4587931fc00fcfe61,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2159,8 +2074,6 @@ MonoBehaviour:
     _priority: 2
   - _pool: {fileID: 1645241608}
     _priority: 2
-  expiredMailPool: {fileID: 0}
-  expiredPackagePool: {fileID: 0}
   spawnDelay: 0.01
   spawnCount: 20
   spawnForce: {x: 20, y: 70}

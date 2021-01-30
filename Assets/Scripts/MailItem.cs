@@ -3,7 +3,7 @@
 public enum Type { letter, cylinder, box };
 public enum Color { Blue, Pink, Yellow, Gray };
 
-public class MailItem : MonoBehaviour
+public class MailItem : SimplePooledPhysicsObject
 {
 	public int Points;
 	public Type type; 
@@ -34,5 +34,17 @@ public class MailItem : MonoBehaviour
 	{
 		transform.GetChild(0).gameObject.SetActive(true);
 		transform.GetChild(1).gameObject.SetActive(false);
+	}
+
+	public override void Activate()
+	{
+		base.Activate();
+		Unexpire();
+	}
+
+	public override void Deactivate()
+	{
+		base.Deactivate();
+		Unexpire();
 	}
 }

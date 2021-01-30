@@ -5,14 +5,12 @@ using UnityEngine;
 public class ObjectSpawner : MonoBehaviour
 {
     [SerializeField] private List<SpawnPoolEntry> spawnPools;
-	[SerializeField] private ObjectPool expiredMailPool;
-	[SerializeField] private ObjectPool expiredPackagePool;
 
 	[Space]
 	[SerializeField]
 	private float spawnDelay;
 	[SerializeField]
-	private float spawnCount;
+	private int spawnCount;
 	[SerializeField]
 	private Vector2 spawnForce;
 	[SerializeField]
@@ -72,11 +70,11 @@ public class ObjectSpawner : MonoBehaviour
 		return _priorityList[index];
 	}
 
-	private IEnumerator SpawnSequence()
+	private IEnumerator SpawnSequence(int count)
 	{
 		IsSpawning = true;
 
-		for (int i = 0; i < spawnCount; i++)
+		for (int i = 0; i < count; i++)
 		{
 			var spawned = GetRandomObject();
 			spawned.GetGameObject().GetComponent<MailItem>().Unexpire();
@@ -101,12 +99,21 @@ public class ObjectSpawner : MonoBehaviour
 		IsSpawning = false;
 	}
 
+	public IEnumerator StartSpawnSequence(int count)
+	{
+		// Do not start if already spawning
+		if (IsSpawning) yield break;
+
+		spawnRoutine = StartCoroutine(SpawnSequence(count));
+		yield return spawnRoutine;
+	}
+
 	public IEnumerator StartSpawnSequence()
 	{
 		// Do not start if already spawning
 		if (IsSpawning) yield break;
 
-		spawnRoutine = StartCoroutine(SpawnSequence());
+		spawnRoutine = StartCoroutine(SpawnSequence(spawnCount));
 		yield return spawnRoutine;
 	}
 
@@ -120,25 +127,6 @@ public class ObjectSpawner : MonoBehaviour
 				MailItem mi = poolable.GetGameObject().GetComponent<MailItem>();
 
 				mi.Expire();
-
-/*
-
-				if (mi.GetType() == Type.letter)
-				{
-					expiredPoolable = expiredMailPool.GetAvailableObject();
-				}
-				else
-				{
-					expiredPoolable = expiredPackagePool.GetAvailableObject();
-				}
-
-				expiredPoolable.Activate();
-
-				GameObject ego = expiredPoolable.GetGameObject();
-				GameObject go = expiredPoolable.GetGameObject();
-
-				ego.transform.position = go.transform.position;
-				ego.transform.rotation = go.transform.rotation;*/
 			});
 		}
 	}

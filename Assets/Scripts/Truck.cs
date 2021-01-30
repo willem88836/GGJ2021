@@ -24,7 +24,7 @@ public class Truck : MonoBehaviour
 
 	float timer = -1;
 	int _currentPhase = 0;
-	SpawnConfig _spawnConfig;
+	int _spawnCount;
 	float _realYeetTime;
 	float _yeeted;
 
@@ -48,9 +48,9 @@ public class Truck : MonoBehaviour
 			MoveOut();
 	}
 
-	public void StartNextRound(SpawnConfig spawnConfig)
+	public void StartNextRound(int spawnCount)
 	{
-		_spawnConfig = spawnConfig;
+		_spawnCount = spawnCount;
 		_currentPhase++;
 	}
 
@@ -64,7 +64,7 @@ public class Truck : MonoBehaviour
 			timer = 0;
 			_currentPhase++;
 
-			_realYeetTime = _yeetInterval * (_spawnConfig.letterCount + _spawnConfig.packageCount);
+			_realYeetTime = _yeetInterval * _spawnCount;
 			_yeeted = 0;
 		}
 	}
@@ -74,7 +74,7 @@ public class Truck : MonoBehaviour
 		if (!startedYeet)
 		{
 			startedYeet = true;
-			StartCoroutine(_spawner.StartSpawnSequence());
+			StartCoroutine(_spawner.StartSpawnSequence(_spawnCount));
 		}
 
 		if (!_spawner.IsSpawning)
@@ -83,34 +83,6 @@ public class Truck : MonoBehaviour
 			_currentPhase++;
 			startedYeet = false;
 		}
-
-		/*
-		_nextYeet -= Time.deltaTime;
-
-		if (_nextYeet <= 0)
-		{
-			_nextYeet = _yeetInterval;
-
-			if(_yeeted < _spawnConfig.letterCount)
-			{
-				Yeet(_mailPool);
-			}
-			else
-			{
-				Yeet(_boxPool);
-			}
-
-			_yeeted++;
-			
-			if(_yeeted > (_spawnConfig.letterCount + _spawnConfig.packageCount))
-			{
-				timer = 0;
-				_currentPhase++;
-			}
-		}
-
-		timer += Time.deltaTime;
-		*/
 	}
 
 	void Yeet(ObjectPool pool)

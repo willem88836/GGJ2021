@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 5935888139733850160}
   - component: {fileID: 5935888139733850166}
   - component: {fileID: 5935888139733850162}
-  - component: {fileID: 8825991242224490170}
   - component: {fileID: 8927365151438120927}
   m_Layer: 0
   m_Name: Cylinder_0_Blue
@@ -66,21 +65,6 @@ CapsuleCollider:
   m_Height: 0.85
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8825991242224490170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5935888139733850163}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa582ba9bf3b28a458794f8f5b9de65b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RigidBody: {fileID: 5935888139733850166}
-  Collider: {fileID: 5935888139733850162}
-  Renderer: {fileID: 8824922319722088736}
 --- !u!114 &8927365151438120927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -93,6 +77,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438cee32643f9ef46a8e8439b6524b62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  RigidBody: {fileID: 5935888139733850166}
+  Collider: {fileID: 5935888139733850162}
+  Renderer: {fileID: 8824922319722088736}
   Points: 2
   type: 1
   color: 0
