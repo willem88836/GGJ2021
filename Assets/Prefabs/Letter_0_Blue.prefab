@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2890390212243828400}
   - component: {fileID: 1933221947}
   m_Layer: 0
-  m_Name: Letter_0
+  m_Name: Letter_0_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,6 +78,8 @@ MonoBehaviour:
   RigidBody: {fileID: 2890390212243828407}
   Collider: {fileID: 2890390212243828400}
   Renderer: {fileID: 1171137350096435906}
+  Points: 1
+  color: 0
 --- !u!1001 &6642890247240662999
 PrefabInstance:
   m_ObjectHideFlags: 0

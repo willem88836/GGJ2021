@@ -78,6 +78,8 @@ MonoBehaviour:
   RigidBody: {fileID: 2722146304956272130}
   Collider: {fileID: 5245912821984188101}
   Renderer: {fileID: 4372317001482919387}
+  Points: 3
+  color: 1
 --- !u!1001 &3492761129304297462
 PrefabInstance:
   m_ObjectHideFlags: 0

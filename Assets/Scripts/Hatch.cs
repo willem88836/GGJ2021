@@ -11,7 +11,7 @@ public class Hatch : MonoBehaviour
 	[SerializeField] float _openTime;
 	[SerializeField] float _waitTime;
 
-	[SerializeField] float _hatchType;
+	[SerializeField] Color _hatchColor;
 	[SerializeField] HatchPit _pit; 
 
 	float _hatchAngle = 0;
@@ -53,8 +53,18 @@ public class Hatch : MonoBehaviour
 
 	public void OnObjectCaught(IObjectPoolable poolableObject)
 	{
-		// TODO: something with colors and types.
-		_manager.AddScore(1);
+		int points = poolableObject.GetPoints();
+		Color color = poolableObject.GetColor();
+
+		CalculateScore(points, color);
+	}
+
+	void CalculateScore(int points, Color color)
+	{
+		if (color != _hatchColor)
+			points = points / 2;
+
+		_manager.AddScore(points);
 	}
 
 	public void StartHatches()
