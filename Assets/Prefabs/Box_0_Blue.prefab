@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7691646150764360343}
   - component: {fileID: 7691646150764360340}
   m_Layer: 0
-  m_Name: Box_0
+  m_Name: Box_0_Blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -78,6 +78,8 @@ MonoBehaviour:
   RigidBody: {fileID: 7691646150764360342}
   Collider: {fileID: 7691646150764360343}
   Renderer: {fileID: 5632758311431879190}
+  Points: 3
+  color: 0
 --- !u!1001 &2677953040359686142
 PrefabInstance:
   m_ObjectHideFlags: 0

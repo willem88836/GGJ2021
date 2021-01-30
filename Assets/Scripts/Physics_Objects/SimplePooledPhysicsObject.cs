@@ -16,7 +16,20 @@ public class SimplePooledPhysicsObject : MonoBehaviour, IObjectPoolable, IPhysic
 		return gameObject;
 	}
 
+	public int Points;
+	public Color color;
+
 	// IObjectPoolable
+
+	public int GetPoints()
+	{
+		return Points;
+	}
+
+	public Color GetColor()
+	{
+		return color;
+	}
 
 	public bool IsActivePoolObject { get; private set; }
 
