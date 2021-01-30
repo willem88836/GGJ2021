@@ -997,21 +997,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
         type: 3}
-      propertyPath: packages.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: hatches.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
       propertyPath: scoreController
       value: 
       objectReference: {fileID: 311747427}
@@ -1027,64 +1012,9 @@ PrefabInstance:
       objectReference: {fileID: 195275812}
     - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
         type: 3}
-      propertyPath: truck
+      propertyPath: levelController
       value: 
-      objectReference: {fileID: 322849415}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[1].time
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[1].value
-      value: 300
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[1].inSlope
-      value: 10.311711
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[1].outSlope
-      value: 10.311711
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[0].value
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: packages.m_Curve.Array.data[1].inWeight
-      value: 0.057618637
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.data[1].time
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.data[1].value
-      value: 60
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.data[1].inSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.data[1].outSlope
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: letters.m_Curve.Array.data[0].value
-      value: 20
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1856696262}
     - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
         type: 3}
       propertyPath: hatches.Array.data[0]
@@ -1102,84 +1032,9 @@ PrefabInstance:
       objectReference: {fileID: 956805052}
     - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
         type: 3}
-      propertyPath: levelTime.m_Curve.Array.data[0].value
-      value: 25
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: restartLevelDelay
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelTime.m_Curve.Array.data[0].time
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: debugMode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: skipTimeKey
-      value: 27
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelScore.m_Curve.Array.data[0].value
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelScore.m_Curve.Array.data[0].inSlope
-      value: 2.3333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelScore.m_Curve.Array.data[0].outSlope
-      value: 2.3333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelScore.m_Curve.Array.data[0].tangentMode
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelScore.m_Curve.Array.data[0].outWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelScore.m_Curve.Array.data[1].time
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelScore.m_Curve.Array.data[1].value
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelScore.m_Curve.Array.data[1].inSlope
-      value: 2.3333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelScore.m_Curve.Array.data[1].outSlope
-      value: 2.3333333
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelScore.m_Curve.Array.data[1].tangentMode
-      value: 34
-      objectReference: {fileID: 0}
-    - target: {fileID: 996741091808439560, guid: 09930f478c05e4f4587931fc00fcfe61,
-        type: 3}
-      propertyPath: levelScore.m_Curve.Array.data[1].inWeight
-      value: 0.33333334
-      objectReference: {fileID: 0}
+      propertyPath: truck
+      value: 
+      objectReference: {fileID: 322849415}
     - target: {fileID: 996741091808439561, guid: 09930f478c05e4f4587931fc00fcfe61,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4612,6 +4467,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2eb6f9deb106e16408b754925880ef1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1856696262 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1856696262, guid: b758bf7966d47174cbc069f003ae306f,
+    type: 3}
+  m_PrefabInstance: {fileID: 9148956623939032558}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45da83e3f8990204fa93c3de1b515307, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1929453265
