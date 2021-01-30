@@ -1,56 +1,33 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
-public class LeafBlowerController : MonoBehaviour
+public class LeafBlowerController : MonoBehaviour, IEquipment
 {
     [SerializeField]
+    PlayerVisions playerVisions;
+
+    [SerializeField]
+    GameObject visual;
+
+    [SerializeField]
+    KeyCode equipKey;
+
+    [Space]
+    [SerializeField]
     private float pointRange;
+
     [SerializeField]
     private ushort forceRange;
+
     [SerializeField]
     private ushort forcePower;
+
     [SerializeField]
     private float upFactor;
+
     [SerializeField]
-    OscillatorAnimation animation;
-
-    private PlayerVisions playerVisions;
-
-    private bool leftMouseDown;
-    private bool rightMouseDown;
-
-    // Start is called before the first frame update
-    private void Start()
-    {
-        playerVisions = gameObject.GetComponent<PlayerVisions>();
-    }
-
-    private void Update()
-    {
-        leftMouseDown = Input.GetMouseButton(0);
-        rightMouseDown = Input.GetMouseButton(1);
-
-        if (leftMouseDown || rightMouseDown)
-		{
-            animation.ToggleAnimation(true);
-		}
-        else
-		{
-            animation.ToggleAnimation(false);
-        }
-    }
-
-	private void FixedUpdate()
-	{
-        if (leftMouseDown)
-        {
-            PushObjects();
-        }
-        else if (rightMouseDown)
-        {
-            PullObjects();
-        }
-    }
+    OscillatorAnimation animatedVisual;
 
 	private void PullObjects()
     {
@@ -114,5 +91,61 @@ public class LeafBlowerController : MonoBehaviour
         {
             enforcable.EnforceForce(direction, forcePower);
         }
+    }
+
+    public KeyCode GetEquipKey()
+    {
+        return equipKey;
+    }
+
+    public IEnumerable<KeyCode> GetActionKeys()
+    {
+        yield return KeyCode.Mouse0;
+        yield return KeyCode.Mouse1;
+    }
+
+    public bool CanDoAction()
+    {
+        // Can always do an action
+        return true;
+    }
+
+    public void DoAction(KeyCode key)
+    {
+        // Not implemented
+    }
+
+    public void NoAction()
+    {
+        // Not implemented
+    }
+
+    public void DoFixedAction(KeyCode key)
+    {
+        if (key == KeyCode.Mouse0)
+        {
+            PushObjects();
+        }
+        else if (key == KeyCode.Mouse1)
+        {
+            PullObjects();
+        }
+
+        animatedVisual.ToggleAnimation(true);
+    }
+
+    public void NoFixedAction()
+    {
+        animatedVisual.ToggleAnimation(false);
+    }
+
+    public void Equip()
+    {
+        if (!visual.activeSelf) visual.SetActive(true);
+    }
+
+    public void Unequip()
+    {
+        if (visual.activeSelf) visual.SetActive(false);
     }
 }

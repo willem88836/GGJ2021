@@ -122,11 +122,11 @@ public class ObjectSpawner : MonoBehaviour
 		foreach(ObjectPool pool in _priorityList)
 		{
 			pool.Foreach((IObjectPoolable poolable) => {
-				//	poolable.Deactivate();
-				IObjectPoolable expiredPoolable; 
-				MailItem mi = poolable.GetGameObject().GetComponent<MailItem>();
-
-				mi.Expire();
+				if (poolable.IsActivePoolObject)
+				{
+					MailItem mi = poolable.GetGameObject().GetComponent<MailItem>();
+					mi.Expire();
+				}
 			});
 		}
 	}
