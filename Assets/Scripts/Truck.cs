@@ -2,8 +2,7 @@
 
 public class Truck : MonoBehaviour
 {
-	[SerializeField]
-	private ObjectSpawner _spawner;
+	public ObjectSpawner _spawner;
 	[SerializeField] Transform _spawnLocation;
 	[SerializeField] ObjectPool _boxPool;
 	[SerializeField] ObjectPool _mailPool;

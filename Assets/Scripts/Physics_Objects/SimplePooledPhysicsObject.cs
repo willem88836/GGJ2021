@@ -11,24 +11,12 @@ public class SimplePooledPhysicsObject : MonoBehaviour, IObjectPoolable, IPhysic
 	[SerializeField]
 	private Renderer Renderer;
 
-	public GameObject GetGameObject()
-	{
-		return gameObject;
-	}
-
-	public int Points;
-	public Color color;
 
 	// IObjectPoolable
 
-	public int GetPoints()
+	public GameObject GetGameObject()
 	{
-		return Points;
-	}
-
-	public Color GetColor()
-	{
-		return color;
+		return gameObject;
 	}
 
 	public bool IsActivePoolObject { get; private set; }

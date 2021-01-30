@@ -9,7 +9,4 @@ public interface IObjectPoolable
     void Deactivate();
 
     GameObject GetGameObject();
-
-	int GetPoints();
-	Color GetColor();
 }

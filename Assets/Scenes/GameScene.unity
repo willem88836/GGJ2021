@@ -950,6 +950,8 @@ MonoBehaviour:
     _priority: 2
   - _pool: {fileID: 1645241608}
     _priority: 2
+  expiredMailPool: {fileID: 0}
+  expiredPackagePool: {fileID: 0}
   spawnDelay: 0.01
   spawnCount: 500
   spawnForce: {x: 20, y: 70}

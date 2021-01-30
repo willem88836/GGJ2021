@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Hatch : MonoBehaviour
 {
@@ -53,8 +50,11 @@ public class Hatch : MonoBehaviour
 
 	public void OnObjectCaught(IObjectPoolable poolableObject)
 	{
-		int points = poolableObject.GetPoints();
-		Color color = poolableObject.GetColor();
+		GameObject go = poolableObject.GetGameObject();
+		MailItem mi = go.GetComponent<MailItem>();
+
+		int points = mi.GetPoints();
+		Color color = mi.GetColor();
 
 		CalculateScore(points, color);
 	}
