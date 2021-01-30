@@ -1,5 +1,7 @@
 ﻿using System.Linq;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -13,10 +15,17 @@ public class HighscoreManager : MonoBehaviour
 	[Space]
 	[SerializeField] Text _newScoreText;
 
+	[Space]
+	[SerializeField] float _sceneSwitchTime;
+	[SerializeField] float _fadeTime;
+	[SerializeField] CanvasGroup _fadePanel;
+
 	HighScore[] _highScores;
 
 	int _newScore = 0;
 	string _newScoreName = "";
+
+	bool _isBusy;
 
 	void Start()
 	{
@@ -70,5 +79,50 @@ public class HighscoreManager : MonoBehaviour
 		_highScores = SortHighscores();
 
 		HighscoreData.SaveHighscores(_highScores);
+	}
+
+	public void SwitchScene(int nextScene)
+	{
+		StartCoroutine(SwitchToSceneSequence(nextScene));
+	}
+
+	public void Exit()
+	{
+		Application.Quit();
+	}
+
+	private IEnumerator SwitchToSceneSequence(int nextScene)
+	{
+		if (_isBusy)
+		{
+			yield break;
+		}
+
+		_isBusy = true;
+
+		var loadAction = SceneManager.LoadSceneAsync(nextScene, LoadSceneMode.Single);
+		loadAction.allowSceneActivation = false;
+
+		float timer = 0;
+
+		while (timer < _sceneSwitchTime)
+		{
+			timer += Time.deltaTime;
+			yield return null;
+		}
+
+		timer = 0;
+
+		while (timer < _fadeTime)
+		{
+			var percent = timer / _fadeTime;
+			_fadePanel.alpha = percent;
+			timer += Time.deltaTime;
+			yield return null;
+		}
+
+		_fadePanel.alpha = 1;
+
+		loadAction.allowSceneActivation = true;
 	}
 }
