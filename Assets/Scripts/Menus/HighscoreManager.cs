@@ -20,6 +20,9 @@ public class HighscoreManager : MonoBehaviour
 	[SerializeField] float _fadeTime;
 	[SerializeField] CanvasGroup _fadePanel;
 
+	[Space]
+	[SerializeField] ObjectSpawner[] _objectSpawners;
+
 	HighScore[] _highScores;
 
 	int _newScore = 0;
@@ -29,6 +32,9 @@ public class HighscoreManager : MonoBehaviour
 
 	void Start()
 	{
+		foreach (ObjectSpawner os in _objectSpawners)
+			StartCoroutine(os.StartSpawnSequence());
+
 		_highScores = HighscoreData.LoadScores();
 		_newScore = HighscoreData.CurrentScore;
 		DisplayHighScores();
