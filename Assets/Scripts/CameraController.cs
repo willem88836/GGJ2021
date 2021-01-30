@@ -11,11 +11,6 @@ public class CameraController : MonoBehaviour
 
 	Vector3 _playerPos = new Vector3();
 
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
 		_playerPos = new Vector3(
