@@ -1,12 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class HatchPit : MonoBehaviour
 {
+	private Hatch parent;
+
+	public void SetHatch(Hatch parent)
+	{
+		this.parent = parent;
+	}
+
 	private void OnTriggerEnter(Collider other)
 	{
-		// TODO dont destroy but use Justins interface
-		Destroy(other.gameObject);
+		IObjectPoolable poolObject = other.GetComponent<IObjectPoolable>();
+		if(poolObject != null)
+		{
+			poolObject.Deactivate();
+			parent.OnObjectCaught(poolObject);
+		}
 	}
 }
