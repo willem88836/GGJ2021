@@ -4,13 +4,20 @@ using UnityEngine;
 
 public class ObjectPool : MonoBehaviour
 {
-	// Editor stuff
-	public GameObject Prefab;
-	public ushort StartCount;
+	[SerializeField]
+	private GameObject prefab;
 
-	public bool DebugMode;
-	public KeyCode DebugSpawnKey;
-	public KeyCode DebugResetKey;
+	[SerializeField]
+	private ushort startCount;
+
+	[SerializeField]
+	private bool debugMode;
+
+	[SerializeField]
+	private KeyCode debugSpawnKey;
+
+	[SerializeField]
+	private KeyCode debugResetKey;
 
 	private readonly List<IObjectPoolable> _poolObjects = new List<IObjectPoolable>();
 
@@ -21,16 +28,16 @@ public class ObjectPool : MonoBehaviour
 
 	private void Update()
 	{
-		if (DebugMode)
+		if (debugMode)
 		{
-			if (Input.GetKeyDown(DebugSpawnKey))
+			if (Input.GetKey(debugSpawnKey))
 			{
 				var poolObject = GetAvailableObject();
 				poolObject.GetGameObject().transform.position = new Vector3(0, 5, 0);
 				poolObject.Activate();
 			}
 
-			if (Input.GetKeyDown(DebugResetKey))
+			if (Input.GetKeyDown(debugResetKey))
 			{
 				Reset();
 			}
@@ -40,13 +47,13 @@ public class ObjectPool : MonoBehaviour
 	private void SpawnInitialObjects()
 	{
 		// Prefab should be suitable for object pooling
-		if (Prefab == null || Prefab.GetComponent<IObjectPoolable>() == null)
+		if (prefab == null || prefab.GetComponent<IObjectPoolable>() == null)
 		{
 			Debug.LogWarning("Prefab should contain a behaviour that implements IObjectPoolable");
 			return;
 		}
 
-		for (int i = 0; i < StartCount; i++)
+		for (int i = 0; i < startCount; i++)
 		{
 			SpawnObject();
 		}
@@ -54,7 +61,7 @@ public class ObjectPool : MonoBehaviour
 
 	private IObjectPoolable SpawnObject()
 	{
-		var newObject = GameObject.Instantiate(Prefab, transform);
+		var newObject = GameObject.Instantiate(prefab, transform);
 		var poolableObject = newObject.GetComponent<IObjectPoolable>();
 
 		poolableObject.Deactivate();

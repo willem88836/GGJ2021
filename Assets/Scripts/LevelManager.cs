@@ -7,13 +7,17 @@ public class LevelManager : MonoBehaviour
 	[Header("Settings")]
 	[SerializeField] private AnimationCurve levelTime;
 	[SerializeField] private AnimationCurve levelScore;
+	[SerializeField] private AnimationCurve packages;
+	[SerializeField] private AnimationCurve letters;
 	[SerializeField] private int maxStrikes = 3;
 	[SerializeField] private int restartLevelDelay;
+	[SerializeField] private int pointCaptureDelay;
 
 	[Header("References")]
 	[SerializeField] private ScoreController scoreController;
 	[SerializeField] private TimeController timeController;
 	[SerializeField] private StrikeController strikeController;
+	[SerializeField] private Hatch[] hatches;
 
 	[Space]
 	[SerializeField] private Truck truck; 
@@ -26,19 +30,14 @@ public class LevelManager : MonoBehaviour
 	private int strikes;
 	private int level;
 
-	private int scoreGoal
-	{
-		get
-		{
-			return (int)(level > levelScore.length
-			? levelScore.Evaluate(levelScore.length)
-			: levelScore.Evaluate(level));
-		}
-	}
 
 
 	private void Start()
 	{
+		foreach(Hatch hatch in hatches)
+		{
+			hatch.setLevelManager(this);
+		}
 		strikeController.SetStrikeCount(maxStrikes);
 		BeginGame();
 	}
@@ -65,15 +64,20 @@ public class LevelManager : MonoBehaviour
 		{
 			LevelStarted();
 
-			int time = (int)(level > levelTime.length 
-				? levelTime.Evaluate(levelTime.length) 
-				: levelTime.Evaluate(level));
+			int time = levelTime.SafeEvaluate(level);
 
 			for (int currentTime = 0; currentTime < time; currentTime++)
 			{
 				timeController.UpdateTimer(time - currentTime);
 				yield return new WaitForSeconds(1);
 			}
+
+			foreach(Hatch hatch in hatches)
+			{
+				hatch.StartHatches();
+			}
+
+			yield return new WaitForSeconds(pointCaptureDelay);
 
 			LevelEnded();
 			level++;
@@ -85,19 +89,31 @@ public class LevelManager : MonoBehaviour
 	}
 
 
+	public void AddScore(int increment)
+	{
+		score += increment;
+		UpdateScore();
+	}
+
 	private void UpdateScore()
 	{
-		scoreController.UpdateScore(score, scoreGoal);
+		scoreController.UpdateScore(score, levelScore.SafeEvaluate(level));
 	}
 
 	private void LevelStarted()
 	{
-		truck.StartNextRound();
+		SpawnConfig spawnConfig = new SpawnConfig()
+		{
+			letterCount = letters.SafeEvaluate(level),
+			packageCount = packages.SafeEvaluate(level)
+		};
+
+		truck.StartNextRound(spawnConfig);
 	}
 
 	private void LevelEnded()
 	{
-		if (score < scoreGoal) {
+		if (score < levelScore.SafeEvaluate(level)) {
 			DealStrike();
 		}
 

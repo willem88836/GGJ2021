@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Hatch : MonoBehaviour
@@ -10,14 +11,25 @@ public class Hatch : MonoBehaviour
 	[SerializeField] float _openTime;
 	[SerializeField] float _waitTime;
 
+	[SerializeField] float _hatchType;
+	[SerializeField] HatchPit _pit; 
+
 	float _hatchAngle = 0;
 	float _timer = 0;
 
 	int _currentPhase = 0;
 
+	LevelManager _manager;
+
+	public void setLevelManager(LevelManager manager)
+	{
+		_manager = manager;
+	}
+
 	void Start()
     {
 		_openTime = 1 / _openTime;
+		_pit.SetHatch(this);
 	}
 
 	void Update()
@@ -37,6 +49,12 @@ public class Hatch : MonoBehaviour
 			Hold();
 		if (_currentPhase == 3)
 			Close();
+	}
+
+	public void OnObjectCaught(IObjectPoolable poolableObject)
+	{
+		// TODO: something with colors and types.
+		_manager.AddScore(1);
 	}
 
 	public void StartHatches()
