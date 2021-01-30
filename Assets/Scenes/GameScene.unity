@@ -1023,26 +1023,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6620994461029931422, guid: 923776d937d7fd7419ae26413cec55a2,
-        type: 3}
-      propertyPath: acceleration
-      value: 400
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620994461029931422, guid: 923776d937d7fd7419ae26413cec55a2,
-        type: 3}
-      propertyPath: deceleration
-      value: 800
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620994461029931422, guid: 923776d937d7fd7419ae26413cec55a2,
-        type: 3}
-      propertyPath: maxSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 6620994461029931423, guid: 923776d937d7fd7419ae26413cec55a2,
-        type: 3}
-      propertyPath: m_Mass
-      value: 50
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 923776d937d7fd7419ae26413cec55a2, type: 3}
 --- !u!4 &857837735 stripped
