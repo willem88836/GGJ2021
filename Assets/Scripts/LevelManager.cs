@@ -70,10 +70,13 @@ public class LevelManager : MonoBehaviour
 			for (int currentTime = 0; currentTime < time; currentTime++)
 			{
 				timeController.UpdateTimer(time - currentTime);
+				UpdateScore();
 				yield return new WaitForSeconds(1);
 
 				if(debugMode && Input.GetKey(skipTimeKey)) break;
 			}
+
+			timeController.UpdateTimer(0);
 
 			foreach(Hatch hatch in hatches)
 			{

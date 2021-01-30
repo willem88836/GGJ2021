@@ -48,7 +48,7 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 120
+      value: 25
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -56,13 +56,13 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 50
-      value: 60
-      inSlope: -3.2158694
-      outSlope: -3.2158694
+      time: 30
+      value: 30
+      inSlope: 0.022637498
+      outSlope: 0.022637498
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.06550827
+      inWeight: 0.08052193
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -72,15 +72,15 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 50
-      inSlope: 0.18137206
-      outSlope: 0.18137206
+      value: 30
+      inSlope: 2.506327
+      outSlope: 2.506327
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0.11671154
+      outWeight: 0.043319833
     - serializedVersion: 3
-      time: 50
+      time: 30
       value: 100
       inSlope: 2.897718
       outSlope: 2.897718
@@ -96,21 +96,21 @@ MonoBehaviour:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 30
-      inSlope: 0
-      outSlope: 0
+      value: 55
+      inSlope: 0.05355335
+      outSlope: 0.05355335
       tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.18280055
     - serializedVersion: 3
-      time: 50
-      value: 90
-      inSlope: 2
-      outSlope: 2
+      time: 30
+      value: 150
+      inSlope: 3.950251
+      outSlope: 3.950251
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.05158966
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
@@ -126,3 +126,5 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   truck: {fileID: 0}
+  debugMode: 0
+  skipTimeKey: 0
