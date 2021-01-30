@@ -1,26 +1,20 @@
 ﻿using UnityEngine;
 
-public class LetterControl : MonoBehaviour, IObjectPoolable, IPhysicsEnforcable
+public class SimplePooledPhysicsObject : MonoBehaviour, IObjectPoolable, IPhysicsEnforcable
 {
-	// Editor stuff
-	public Rigidbody RigidBody;
-	public Collider Collider;
-	public Renderer Renderer;
+	[SerializeField]
+	private Rigidbody RigidBody;
 
-	void Awake()
-    {
-        
-    }
+	[SerializeField]
+	private Collider Collider;
 
-    void Start()
-    {
+	[SerializeField]
+	private Renderer Renderer;
 
-    }
-
-    void Update()
-    {
-        
-    }
+	public GameObject GetGameObject()
+	{
+		return gameObject;
+	}
 
 	// IObjectPoolable
 
@@ -46,11 +40,6 @@ public class LetterControl : MonoBehaviour, IObjectPoolable, IPhysicsEnforcable
 		if (RigidBody.detectCollisions) RigidBody.detectCollisions = false;
 
 		IsActivePoolObject = false;
-	}
-
-	public GameObject GetGameObject()
-	{
-		return gameObject;
 	}
 
 	// IOPhysicsEnforcable

@@ -3,38 +3,60 @@ using UnityEngine;
 
 public class PhysicsDebugController : MonoBehaviour
 {
-    public Camera DebugView;
-    public bool DebugMode;
-    public ushort ForceRange;
-    public ushort ForcePower;
+    [SerializeField]
+    private Camera debugView;
 
-    void Awake()
-	{
+    [SerializeField]
+    private bool debugMode;
 
-	}
+    [SerializeField]
+    private ushort forceRange;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField]
+    private ushort forcePower;
+
+    [SerializeField]
+    private float upFactor;
+
+    private bool mouseDown;
 
     // Update is called once per frame
     void Update()
     {
-        if (DebugMode)
+        if (debugMode)
 		{
             if (Input.GetMouseButtonDown(0))
 			{
                 var point = GetMouseInteractionPosition();
-                EnactForceAtPoint(point, ForceRange, ForcePower);
+                EnactForceAtPoint(point, forceRange, forcePower);
+			}
+
+            if (Input.GetMouseButton(1) && !mouseDown)
+			{
+                mouseDown = true;
+            } 
+            else if (mouseDown)
+			{
+                mouseDown = false;
 			}
 		}
     }
 
-    Vector3 GetMouseInteractionPosition()
+	private void FixedUpdate()
 	{
-        var ray = DebugView.ScreenPointToRay(Input.mousePosition);
+        if (debugMode)
+		{
+            if (mouseDown)
+            {
+                var point = GetMouseInteractionPosition();
+                EnactForceAtPoint(point, forceRange, forcePower);
+            }
+        }
+	}
+
+	Vector3 GetMouseInteractionPosition()
+	{
+        var ray = debugView.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out var hit))
 		{
@@ -56,6 +78,10 @@ public class PhysicsDebugController : MonoBehaviour
         foreach(var enforcable in enforcableObjects)
 		{
             var direction = (enforcable.GetGameObject().transform.position - point).normalized;
+
+            // Add up direction
+            direction = (direction + Vector3.up * upFactor).normalized;
+
             enforcable.EnforceForce(direction, power);
 		}
 
