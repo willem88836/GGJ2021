@@ -98,5 +98,5 @@ MonoBehaviour:
   _moveRange: 10
   _yeetInterval: 0.2
   _yeetSpread: 1
-  _yeetpowerMin: 1
-  _yeetpowerMax: 1
+  _yeetpowerMin: 10
+  _yeetpowerMax: 50

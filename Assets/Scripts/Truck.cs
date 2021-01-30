@@ -1,9 +1,7 @@
-﻿using UnityEditor;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Truck : MonoBehaviour
 {
-	[SerializeField] GameObject _post; // get from pool
 	[SerializeField] Transform _spawnLocation;
 	[SerializeField] ObjectPool _boxPool;
 	[SerializeField] ObjectPool _mailPool;
@@ -112,7 +110,8 @@ public class Truck : MonoBehaviour
 		GameObject go = op.GetGameObject();
 		go.transform.position = _spawnLocation.position;
 		Rigidbody rb = go.GetComponent<Rigidbody>();
-		rb.AddForce(direction * 10, ForceMode.Impulse);
+		float randomPower = Random.Range(_yeetpowerMin, _yeetpowerMax);
+		rb.AddForce(direction * randomPower, ForceMode.Impulse);
 	}
 
 	void MoveOut()
