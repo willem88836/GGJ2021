@@ -1,118 +1,90 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Truck : MonoBehaviour
 {
-	public ObjectSpawner _spawner;
-	[SerializeField] Transform _spawnLocation;
-	[SerializeField] ObjectPool _boxPool;
-	[SerializeField] ObjectPool _mailPool;
-	[Space]
-
-	[SerializeField] float _moveTime;
-	[SerializeField] float _moveRange;
-
-	Vector3 _startPosition;
-	Vector3 _yeetPosition;
+	[SerializeField]
+	ObjectSpawner objectSpawner;
 
 	[Space]
-	[SerializeField] float _yeetInterval;
-	[SerializeField] float _yeetSpread;
-	[SerializeField] float _yeetpowerMin;
-	[SerializeField] float _yeetpowerMax;
+	[SerializeField] 
+	float moveTowardsTime;
+	[SerializeField] 
+	float moveAwayTime;
+	[SerializeField] 
+	Vector3 moveOffset;
 
-	float _nextYeet = 0.2f; // is probably in a gamemanager or something
+	[Space]
+	[SerializeField]
+	TruckDoor leftDoor;
+	[SerializeField]
+	TruckDoor rightDoor;
 
-	float timer = -1;
-	int _currentPhase = 0;
-	int _spawnCount;
-	float _realYeetTime;
-	float _yeeted;
+	Vector3 originalPosition;
+	Vector3 targetPosition;
 
-	bool startedYeet = false;
+	Coroutine roundSequence = null;
 
-	void Start()
+	private void Awake()
 	{
-		_startPosition = transform.position;
-		_yeetPosition = transform.position + Vector3.right * _moveRange;
-
-		_moveTime = 1 / _moveTime;
-	}
-
-	void Update()
-    {
-		if (_currentPhase == 1)
-			MoveIn();
-		if (_currentPhase == 2)
-			YeetPhase();
-		if (_currentPhase == 3)
-			MoveOut();
+		originalPosition = transform.position;
+		targetPosition = transform.position + moveOffset;
 	}
 
 	public void StartNextRound(int spawnCount)
 	{
-		_spawnCount = spawnCount;
-		_currentPhase++;
+		if (roundSequence != null) return;
+
+		objectSpawner.ExpireMail();
+		roundSequence = StartCoroutine(RoundSequence(spawnCount));
 	}
 
-	void MoveIn()
+	private IEnumerator RoundSequence(int spawnCount)
 	{
-		timer += Time.deltaTime * _moveTime;
-		transform.position = Vector3.Lerp(_startPosition, _yeetPosition, timer);
+		float timer = 0;
 
-		if (timer > 1)
+		while (timer < moveTowardsTime)
 		{
-			timer = 0;
-			_currentPhase++;
+			var percent = timer / moveTowardsTime;
+			transform.position = Vector3.Lerp(originalPosition, targetPosition, percent);
 
-			_realYeetTime = _yeetInterval * _spawnCount;
-			_yeeted = 0;
-		}
-	}
-
-	void YeetPhase()
-	{
-		if (!startedYeet)
-		{
-			startedYeet = true;
-			StartCoroutine(_spawner.StartSpawnSequence(_spawnCount));
+			timer += Time.deltaTime;
+			yield return null;
 		}
 
-		if (!_spawner.IsSpawning)
+		transform.position = targetPosition;
+
+		// Start opening both doors
+		var leftOpen = StartCoroutine(leftDoor.OpenSequence());
+		var rightOpen = StartCoroutine(rightDoor.OpenSequence());
+
+		// Wait for both doors
+		yield return leftOpen;
+		yield return rightOpen;
+
+		yield return StartCoroutine(objectSpawner.StartSpawnSequence(spawnCount));
+
+		// Start closing both doors
+		var leftClose = StartCoroutine(leftDoor.CloseSequence());
+		var rightClose = StartCoroutine(rightDoor.CloseSequence());
+
+		// Wait for both doors
+		yield return leftClose;
+		yield return rightClose;
+
+		timer = 0;
+
+		while (timer < moveAwayTime)
 		{
-			timer = 0;
-			_currentPhase++;
-			startedYeet = false;
+			var percent = timer / moveAwayTime;
+			transform.position = Vector3.Lerp(targetPosition, originalPosition, percent);
+
+			timer += Time.deltaTime;
+			yield return null;
 		}
-	}
 
-	void Yeet(ObjectPool pool)
-	{
-		Vector3 direction = Vector3.right;
+		transform.position = originalPosition;
 
-		float randomUp = Random.Range(0, _yeetSpread);
-		direction += Vector3.up * randomUp;
-
-		float randomSide = Random.Range(-_yeetSpread, _yeetSpread);
-		direction += Vector3.forward * randomSide;
-
-		IObjectPoolable op = pool.GetAvailableObject();
-		op.Activate();
-		GameObject go = op.GetGameObject();
-		go.transform.position = _spawnLocation.position;
-		Rigidbody rb = go.GetComponent<Rigidbody>();
-		float randomPower = Random.Range(_yeetpowerMin, _yeetpowerMax);
-		rb.AddForce(direction * randomPower, ForceMode.Impulse);
-	}
-
-	void MoveOut()
-	{
-		timer += Time.deltaTime * _moveTime;
-		transform.position = Vector3.Lerp(_yeetPosition, _startPosition, timer);
-
-		if (timer > 1)
-		{
-			timer = 0;
-			_currentPhase = 0;
-		}
+		roundSequence = null;
 	}
 }
