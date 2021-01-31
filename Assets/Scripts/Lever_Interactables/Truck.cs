@@ -25,6 +25,10 @@ public class Truck : MonoBehaviour
 
 	Coroutine roundSequence = null;
 
+	[SerializeField] AudioSource engineAudio;
+	[SerializeField] AudioSource beepAudio;
+	[SerializeField] AudioSource yeetAudio;
+
 	private void Awake()
 	{
 		originalPosition = transform.position;
@@ -41,6 +45,8 @@ public class Truck : MonoBehaviour
 
 	private IEnumerator RoundSequence(int spawnCount)
 	{
+		engineAudio.Play();
+
 		float timer = 0;
 
 		while (timer < moveTowardsTime)
@@ -52,6 +58,8 @@ public class Truck : MonoBehaviour
 			yield return null;
 		}
 
+		beepAudio.Play();
+
 		transform.position = targetPosition;
 
 		// Start opening both doors
@@ -62,6 +70,7 @@ public class Truck : MonoBehaviour
 		yield return leftOpen;
 		yield return rightOpen;
 
+		yeetAudio.Play();
 		yield return StartCoroutine(objectSpawner.StartSpawnSequence(spawnCount));
 
 		// Start closing both doors
@@ -86,5 +95,7 @@ public class Truck : MonoBehaviour
 		transform.position = originalPosition;
 
 		roundSequence = null;
+
+		engineAudio.Stop();
 	}
 }

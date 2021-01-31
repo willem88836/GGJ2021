@@ -5,6 +5,7 @@ public class Shredder : MonoBehaviour
 {
 	[SerializeField] private ParticleSystem destroyParticle;
 	[SerializeField] private float destroyDelay;
+	[SerializeField] AudioSource audioSource;
 
 	public void OnCollisionEnter(Collision other)
 	{
@@ -22,6 +23,8 @@ public class Shredder : MonoBehaviour
 			particle.transform.rotation = rot;
 
 			StartCoroutine(DestroyParticle(particle));
+			if (audioSource.isPlaying == false)
+				audioSource.Play();
 		}
 	}
 
