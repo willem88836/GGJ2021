@@ -8,8 +8,13 @@ public class Bomb : MailItem
 	[SerializeField] private float explosionTimer;
 	[SerializeField] private float timerDeviation;
 	[SerializeField] private float upFactor;
+	[Space]
 	[SerializeField] private ParticleSystem explosionParticle; 
 	[SerializeField] private ParticleSystem sterretjesParticle;
+	[Space]
+	[SerializeField] AudioSource audioSource;
+	[SerializeField] AudioClip sizzle;
+	[SerializeField] AudioClip boom;
 
 	private bool isTicking;
 	private float realExplosionTimer;
@@ -21,7 +26,10 @@ public class Bomb : MailItem
 		isTicking = true;
 		realExplosionTimer = explosionTimer + Random.Range(-timerDeviation, timerDeviation);
 		tick = 0;
+
 		sterretjesParticle.Play();
+		audioSource.clip = sizzle;
+		audioSource.Play();
 	}
 
 	public override void Deactivate()
@@ -30,6 +38,7 @@ public class Bomb : MailItem
 		isTicking = false;
 		tick = 0;
 		sterretjesParticle.Stop();
+		audioSource.Stop();
 	}
 
 	public void Update()
@@ -56,6 +65,10 @@ public class Bomb : MailItem
 
 				sterretjesParticle.Stop();
 				explosionParticle.Play();
+
+				audioSource.Stop();
+				audioSource.clip = boom;
+				audioSource.Play();
 
 				Deactivate();
 			}

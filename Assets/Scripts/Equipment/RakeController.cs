@@ -47,7 +47,16 @@ public class RakeController : MonoBehaviour, IEquipment
 
     private bool isOnCooldown;
 
-    private IEnumerator StartCooldown()
+	[SerializeField]
+	AudioSource audioSource;
+
+	[SerializeField]
+	AudioClip[] hark;
+
+	[SerializeField]
+	AudioClip[] trek;
+
+	private IEnumerator StartCooldown()
 	{
         // Break if already on cooldown
         if (isOnCooldown) yield break;
@@ -92,7 +101,12 @@ public class RakeController : MonoBehaviour, IEquipment
             direction = (direction + Vector3.up * upFactor).normalized;
             enforcable.EnforceForce(direction, forcePower);
         }
-    }
+
+		int clipindex = Random.Range(0, hark.Length);
+		AudioClip clip = hark[clipindex];
+		audioSource.clip = clip;
+		audioSource.Play();
+	}
 
     private void PushObjects()
 	{
@@ -123,7 +137,12 @@ public class RakeController : MonoBehaviour, IEquipment
             direction = (direction + Vector3.up * upFactor).normalized;
             enforcable.EnforceForce(direction, forcePower);
         }
-    }
+
+		int clipindex = Random.Range(0, trek.Length);
+		AudioClip clip = trek[clipindex];
+		audioSource.clip = clip;
+		audioSource.Play();
+	}
 
     public KeyCode GetEquipKey()
 	{
