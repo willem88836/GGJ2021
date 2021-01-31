@@ -51,10 +51,10 @@ public class RakeController : MonoBehaviour, IEquipment
 	AudioSource audioSource;
 
 	[SerializeField]
-	AudioClip[] hark;
+	AudioClip hark;
 
 	[SerializeField]
-	AudioClip[] trek;
+	AudioClip trek;
 
 	private IEnumerator StartCooldown()
 	{
@@ -102,8 +102,7 @@ public class RakeController : MonoBehaviour, IEquipment
             enforcable.EnforceForce(direction, forcePower);
         }
 
-		int clipindex = Random.Range(0, hark.Length -1);
-		AudioClip clip = hark[clipindex];
+		AudioClip clip = hark;
 		audioSource.clip = clip;
 		audioSource.Play();
 	}
@@ -138,9 +137,7 @@ public class RakeController : MonoBehaviour, IEquipment
             enforcable.EnforceForce(direction, forcePower);
         }
 
-		int clipindex = Random.Range(0, trek.Length -1);
-		//Debug.Log(clipindex);
-		AudioClip clip = trek[clipindex];
+		AudioClip clip = trek;
 		audioSource.clip = clip;
 		audioSource.Play();
 	}
