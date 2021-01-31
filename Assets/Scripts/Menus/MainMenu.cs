@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using JetBrains.Annotations;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -26,6 +27,9 @@ public class MainMenu : MonoBehaviour
 
 	[SerializeField]
 	private RectTransform ControlUI;
+
+	[SerializeField]
+	private int playScene;
 
 	private bool _isBusy;
 
@@ -132,6 +136,12 @@ public class MainMenu : MonoBehaviour
 		{
 			var percent = timer / fadeTime;
 			fadePanel.alpha = percent;
+
+			if(nextScene == playScene)
+			{
+				MenuAudio.Fade(1 - percent);
+			}
+
 			timer += Time.deltaTime;
 			yield return null;
 		}

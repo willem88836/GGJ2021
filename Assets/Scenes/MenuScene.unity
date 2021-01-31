@@ -727,6 +727,7 @@ MonoBehaviour:
   fadeTime: 0.5
   mainUI: {fileID: 0}
   ControlUI: {fileID: 0}
+  playScene: 1
 --- !u!1 &492087359
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,10 +1,21 @@
-﻿using UnityEngine;
+﻿using System.Runtime.CompilerServices;
+using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
 public class MenuAudio : MonoBehaviour
 {
     [SerializeField] private bool enableMenuAudio;
     private static MenuAudio singleton;
+
+    public static MenuAudio GetMenuAudio()
+    {
+        return singleton;
+    }
+
+    public static void Fade(float alpha)
+    {
+        singleton.GetComponent<AudioSource>().volume = Mathf.Clamp01(alpha);
+    }
 
     // Start is called before the first frame update
     private void Start()
