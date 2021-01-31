@@ -69,5 +69,8 @@ public class Pause : MonoBehaviour
 		_fadePanel.alpha = 1;
 
 		loadAction.allowSceneActivation = true;
+
+		Time.timeScale = 1;
+		_isBusy = false;
 	}
 }
