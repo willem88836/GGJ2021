@@ -13,6 +13,7 @@ public class Bomb : MailItem
 	[SerializeField] private ParticleSystem sterretjesParticle;
 	[Space]
 	[SerializeField] AudioSource audioSource;
+	[SerializeField] AudioSource audioSourceBoom;
 	[SerializeField] AudioClip sizzle;
 	[SerializeField] AudioClip boom;
 
@@ -66,9 +67,10 @@ public class Bomb : MailItem
 				sterretjesParticle.Stop();
 				explosionParticle.Play();
 
+
 				audioSource.Stop();
-				audioSource.clip = boom;
-				audioSource.Play();
+				audioSourceBoom.clip = boom;
+				audioSourceBoom.Play();
 
 				Deactivate();
 			}
