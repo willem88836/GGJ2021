@@ -55,7 +55,7 @@ public class Hatch : MonoBehaviour
 
 		Color color = mi.GetColor();
 
-		if(color == _hatchColor)
+		if(color == _hatchColor || mi.GetType() == Type.baddie)
 		{
 			int points = mi.GetPoints();
 			_manager.AddScore(points);
