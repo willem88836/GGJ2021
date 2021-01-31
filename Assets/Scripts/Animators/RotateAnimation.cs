@@ -2,18 +2,23 @@
 
 public class RotateAnimation : MonoBehaviour
 {
-    [SerializeField] private float speed;
+    [SerializeField] 
+    private float speed;
+    [SerializeField]
+    private Vector3 axisFactors = Vector3.forward;
 
+    float randomOffset;
 
     // Start is called before the first frame update
     void Start()
     {
-        transform.rotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+        transform.Rotate(axisFactors, Random.Range(0, 360));
+        //transform.rotation = Quaternion.Euler(axisFactors * random);
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(new Vector3(0, 0, speed * Time.deltaTime));
+        transform.Rotate(axisFactors, speed * Time.deltaTime);
     }
 }
