@@ -36,7 +36,15 @@ public class LeafBlowerController : MonoBehaviour, IEquipment
 	[SerializeField]
 	BlowerParticle suckParticle;
 
-    [Space]
+	[SerializeField]
+	AudioSource audioSource;
+
+	[SerializeField]
+	AudioClip blow;
+	[SerializeField]
+	AudioClip suck;
+
+	[Space]
     [SerializeField]
     private Image uiButton;
     [SerializeField]
@@ -141,12 +149,25 @@ public class LeafBlowerController : MonoBehaviour, IEquipment
         {
             PushObjects();
 			blowParticle.ToggleParticle(true);
+
+			if (audioSource.isPlaying == false)
+			{
+				audioSource.clip = blow;
+				audioSource.Play();
+			}
+			
 		}
         else if (key == KeyCode.Mouse1)
         {
             PullObjects();
 			suckParticle.ToggleParticle(true);
-        }
+
+			if (audioSource.isPlaying == false)
+			{
+				audioSource.clip = suck;
+				audioSource.Play();
+			}
+		}
 
         animatedVisual.ToggleAnimation(true);
     }
@@ -156,6 +177,8 @@ public class LeafBlowerController : MonoBehaviour, IEquipment
         animatedVisual.ToggleAnimation(false);
 		blowParticle.ToggleParticle(false);
 		suckParticle.ToggleParticle(false);
+
+		audioSource.Stop();
 	}
 
 	public void Equip()

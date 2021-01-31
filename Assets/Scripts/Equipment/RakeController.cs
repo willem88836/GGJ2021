@@ -102,7 +102,7 @@ public class RakeController : MonoBehaviour, IEquipment
             enforcable.EnforceForce(direction, forcePower);
         }
 
-		int clipindex = Random.Range(0, hark.Length);
+		int clipindex = Random.Range(0, hark.Length -1);
 		AudioClip clip = hark[clipindex];
 		audioSource.clip = clip;
 		audioSource.Play();
@@ -138,7 +138,8 @@ public class RakeController : MonoBehaviour, IEquipment
             enforcable.EnforceForce(direction, forcePower);
         }
 
-		int clipindex = Random.Range(0, trek.Length);
+		int clipindex = Random.Range(0, trek.Length -1);
+		//Debug.Log(clipindex);
 		AudioClip clip = trek[clipindex];
 		audioSource.clip = clip;
 		audioSource.Play();
