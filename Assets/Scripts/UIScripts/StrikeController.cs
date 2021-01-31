@@ -19,7 +19,7 @@ public class StrikeController : MonoBehaviour
 
 	public void UpdateStrikes(int count)
 	{
-		switch(count)
+		switch (count)
 		{
 			case 0:
 				ToggleLamps(firstStrikes, false);
