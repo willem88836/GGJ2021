@@ -7,6 +7,7 @@ But watch out! You should shred the contraband or else it might explode. Good lu
 
 Find it on: 
 itch.io: https://bariladan.itch.io/postzegels-please
+
 Global Game Jam: https://globalgamejam.org/2021/games/postzegels-please-8
 
 Built with Unity 2018.4.31f1
