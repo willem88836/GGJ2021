@@ -53,6 +53,8 @@ public class Hatch : MonoBehaviour
 		GameObject go = poolableObject.GetGameObject();
 		MailItem mi = go.GetComponent<MailItem>();
 
+		if (mi == null) return;
+
 		Color color = mi.GetColor();
 
 		if(color == _hatchColor || mi.GetType() == Type.baddie)
