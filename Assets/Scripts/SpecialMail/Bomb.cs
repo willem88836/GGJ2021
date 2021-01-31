@@ -6,15 +6,19 @@ public class Bomb : MailItem
 	[SerializeField] private float explosionRange;
 	[SerializeField] private float explosionPower;
 	[SerializeField] private float explosionTimer;
+	[SerializeField] private float timerDeviation;
 	[SerializeField] private float upFactor;
+	[SerializeField] private ParticleSystem explosionParticle; 
 
 	private bool isTicking;
+	private float realExplosionTimer;
 	private float tick;
 
 	public override void Activate()
 	{
 		base.Activate();
 		isTicking = true;
+		realExplosionTimer = explosionTimer + Random.Range(-timerDeviation, timerDeviation);
 		tick = 0;
 	}
 
@@ -31,7 +35,7 @@ public class Bomb : MailItem
 		{
 			tick += Time.deltaTime;
 
-			if (tick > explosionTimer)
+			if (tick > realExplosionTimer)
 			{
 				var overlapObjects = Physics.OverlapSphere(transform.position, explosionRange).Select(i => i.gameObject);
 
@@ -46,6 +50,8 @@ public class Bomb : MailItem
 
 					enforcable.EnforceForce(direction, explosionPower);
 				}
+
+				explosionParticle.Play();
 
 				Deactivate();
 			}
