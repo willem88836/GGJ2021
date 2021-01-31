@@ -123,4 +123,36 @@ public class PlayerEquipmentControl : MonoBehaviour
 
         return KeyCode.None;
     }
+
+    public void UIPressed (int keyCode)
+	{
+        // Hardcode resulting key
+        var inputKey = KeyCode.None;
+
+        switch(keyCode)
+		{
+            case 1:
+                inputKey = KeyCode.Alpha1;
+                break;
+            case 2:
+                inputKey = KeyCode.Alpha2;
+                break;
+            case 3:
+                inputKey = KeyCode.Alpha3;
+                break;
+            case 4:
+                inputKey = KeyCode.Alpha4;
+                break;
+		}
+
+        // Detect equipment swap input
+        foreach (var key in equipments.Keys)
+        {
+            if (key == inputKey)
+            {
+                Equip(equipments[key]);
+                return;
+            }
+        }
+    }
 }
