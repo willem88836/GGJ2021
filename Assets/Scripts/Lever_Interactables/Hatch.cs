@@ -53,18 +53,13 @@ public class Hatch : MonoBehaviour
 		GameObject go = poolableObject.GetGameObject();
 		MailItem mi = go.GetComponent<MailItem>();
 
-		int points = mi.GetPoints();
 		Color color = mi.GetColor();
 
-		CalculateScore(points, color);
-	}
-
-	void CalculateScore(int points, Color color)
-	{
-		if (color != _hatchColor)
-			points = points / 2;
-
-		_manager.AddScore(points);
+		if(color == _hatchColor)
+		{
+			int points = mi.GetPoints();
+			_manager.AddScore(points);
+		}
 	}
 
 	public void StartHatches()
