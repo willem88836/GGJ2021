@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -11496,12 +11496,12 @@ PrefabInstance:
         type: 3}
       propertyPath: trek
       value: 
-      objectReference: {fileID: 8300000, guid: 36d3b96faed3ae045a5681d1e1dcfec0, type: 3}
+      objectReference: {fileID: 8300000, guid: fa7e4ad6edb01bc468c0015fe29341fb, type: 3}
     - target: {fileID: 6201950423390399570, guid: 923776d937d7fd7419ae26413cec55a2,
         type: 3}
       propertyPath: hark
       value: 
-      objectReference: {fileID: 8300000, guid: fa7e4ad6edb01bc468c0015fe29341fb, type: 3}
+      objectReference: {fileID: 8300000, guid: 36d3b96faed3ae045a5681d1e1dcfec0, type: 3}
     - target: {fileID: 6201950423390399571, guid: 923776d937d7fd7419ae26413cec55a2,
         type: 3}
       propertyPath: uiButton
@@ -11536,12 +11536,12 @@ PrefabInstance:
         type: 3}
       propertyPath: trek
       value: 
-      objectReference: {fileID: 8300000, guid: 36d3b96faed3ae045a5681d1e1dcfec0, type: 3}
+      objectReference: {fileID: 8300000, guid: fa7e4ad6edb01bc468c0015fe29341fb, type: 3}
     - target: {fileID: 7110137244981371612, guid: 923776d937d7fd7419ae26413cec55a2,
         type: 3}
       propertyPath: hark
       value: 
-      objectReference: {fileID: 8300000, guid: fa7e4ad6edb01bc468c0015fe29341fb, type: 3}
+      objectReference: {fileID: 8300000, guid: 36d3b96faed3ae045a5681d1e1dcfec0, type: 3}
     - target: {fileID: 7110137244981371613, guid: 923776d937d7fd7419ae26413cec55a2,
         type: 3}
       propertyPath: uiButton
@@ -11551,12 +11551,12 @@ PrefabInstance:
         type: 3}
       propertyPath: hark
       value: 
-      objectReference: {fileID: 8300000, guid: bbddb66589feb0b4e8b2a2ba2f82acb6, type: 3}
+      objectReference: {fileID: 8300000, guid: 36d3b96faed3ae045a5681d1e1dcfec0, type: 3}
     - target: {fileID: 7110137244981371613, guid: 923776d937d7fd7419ae26413cec55a2,
         type: 3}
       propertyPath: trek
       value: 
-      objectReference: {fileID: 8300000, guid: de7f4cbc5082baf4894f3d21da8cbcec, type: 3}
+      objectReference: {fileID: 8300000, guid: fa7e4ad6edb01bc468c0015fe29341fb, type: 3}
     - target: {fileID: 7110137244981371613, guid: 923776d937d7fd7419ae26413cec55a2,
         type: 3}
       propertyPath: audioSource
