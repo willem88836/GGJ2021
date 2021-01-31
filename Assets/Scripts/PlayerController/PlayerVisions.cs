@@ -15,7 +15,10 @@ public class PlayerVisions : MonoBehaviour
     // Update is called once per frame
     private void Update()
     {
-        Rotate();
+        if(Time.timeScale > 0)
+        {
+            Rotate();
+        }
     }
 
     private void Rotate()
