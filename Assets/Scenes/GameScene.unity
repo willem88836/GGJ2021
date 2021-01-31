@@ -89,7 +89,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -112,6 +112,54 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &23908690
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 23908692}
+  - component: {fileID: 23908691}
+  m_Layer: 0
+  m_Name: Coffin_Pool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &23908691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23908690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dcfa47605b927a4a822a2eb21855c79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 5125935796516755839, guid: 71092262aacaf544f8b8caf75257fff3, type: 3}
+  startCount: 5
+  debugMode: 0
+  debugSpawnKey: 53
+  debugResetKey: 48
+--- !u!4 &23908692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 23908690}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 355946837}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &45422158 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9148956623914582944, guid: b758bf7966d47174cbc069f003ae306f,
@@ -767,6 +815,7 @@ Transform:
   - {fileID: 581370554}
   - {fileID: 1809595784}
   - {fileID: 1186807061}
+  - {fileID: 23908692}
   m_Father: {fileID: 1126046324}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2711,24 +2760,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPools:
   - _pool: {fileID: 1003976374}
-    _priority: 5
+    _priority: 10
   - _pool: {fileID: 175898218}
-    _priority: 5
+    _priority: 10
   - _pool: {fileID: 547242068}
-    _priority: 5
+    _priority: 10
   - _pool: {fileID: 492698336}
-    _priority: 2
+    _priority: 4
   - _pool: {fileID: 639807530}
-    _priority: 2
+    _priority: 4
   - _pool: {fileID: 1645241608}
-    _priority: 2
+    _priority: 4
   - _pool: {fileID: 1718072182}
-    _priority: 3
+    _priority: 6
   - _pool: {fileID: 1809595785}
-    _priority: 3
+    _priority: 6
   - _pool: {fileID: 1809595785}
-    _priority: 3
+    _priority: 6
   - _pool: {fileID: 1186807062}
+    _priority: 2
+  - _pool: {fileID: 23908691}
     _priority: 1
   spawnDelay: 0.01
   spawnCount: 20
