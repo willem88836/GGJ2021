@@ -9479,7 +9479,7 @@ MonoBehaviour:
   RigidBody: {fileID: 28058751638148220}
   Collider: {fileID: 28058751638148221}
   Renderer: {fileID: 8002406386597029858}
-  Points: -2
+  Points: -6
   type: 3
   color: 3
   explosionRange: 3

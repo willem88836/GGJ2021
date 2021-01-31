@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class RakeController : MonoBehaviour, IEquipment
 {
@@ -35,6 +36,14 @@ public class RakeController : MonoBehaviour, IEquipment
 
     [SerializeField]
     private float cooldownTime;
+
+    [Space]
+    [SerializeField]
+    private Image uiButton;
+    [SerializeField]
+    private Sprite activeSprite;
+    [SerializeField]
+    private Sprite inactiveSprite;
 
     private bool isOnCooldown;
 
@@ -185,10 +194,14 @@ public class RakeController : MonoBehaviour, IEquipment
     public void Equip()
     {
         if (!visual.activeSelf) visual.SetActive(true);
+
+        uiButton.sprite = activeSprite;
     }
 
     public void Unequip()
     {
         if (visual.activeSelf) visual.SetActive(false);
+
+        uiButton.sprite = inactiveSprite;
     }
 }

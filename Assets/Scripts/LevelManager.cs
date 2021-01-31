@@ -45,8 +45,8 @@ public class LevelManager : MonoBehaviour
 		{
 			hatch.setLevelManager(this);
 		}
-		strikeController.SetStrikeCount(maxStrikes);
-		BeginGame();
+
+		//BeginGame();
 	}
 
 	public void BeginGame()

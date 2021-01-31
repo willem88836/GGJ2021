@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LeafBlowerController : MonoBehaviour, IEquipment
 {
@@ -35,16 +36,15 @@ public class LeafBlowerController : MonoBehaviour, IEquipment
 	[SerializeField]
 	BlowerParticle suckParticle;
 
-	[SerializeField]
-	AudioSource audioSource;
+    [Space]
+    [SerializeField]
+    private Image uiButton;
+    [SerializeField]
+    private Sprite activeSprite;
+    [SerializeField]
+    private Sprite inactiveSprite;
 
-	[SerializeField]
-	AudioClip blowSound;
-
-	[SerializeField]
-	AudioClip suckSound;
-
-	private void PullObjects()
+    private void PullObjects()
     {
         Vector3 inputDirection = (playerVisions.GetMouseWorldPoint() - transform.position).normalized;
 
@@ -141,18 +141,12 @@ public class LeafBlowerController : MonoBehaviour, IEquipment
         {
             PushObjects();
 			blowParticle.ToggleParticle(true);
-			audioSource.clip = blowSound;
-			if (audioSource.isPlaying == false)
-				audioSource.Play();
 		}
         else if (key == KeyCode.Mouse1)
         {
             PullObjects();
 			suckParticle.ToggleParticle(true);
-			audioSource.clip = suckSound;
-			if (audioSource.isPlaying == false)
-				audioSource.Play();
-		}
+        }
 
         animatedVisual.ToggleAnimation(true);
     }
@@ -162,16 +156,19 @@ public class LeafBlowerController : MonoBehaviour, IEquipment
         animatedVisual.ToggleAnimation(false);
 		blowParticle.ToggleParticle(false);
 		suckParticle.ToggleParticle(false);
-		audioSource.Stop();
 	}
 
 	public void Equip()
     {
         if (!visual.activeSelf) visual.SetActive(true);
+
+        uiButton.sprite = activeSprite;
     }
 
     public void Unequip()
     {
         if (visual.activeSelf) visual.SetActive(false);
+
+        uiButton.sprite = inactiveSprite;
     }
 }
