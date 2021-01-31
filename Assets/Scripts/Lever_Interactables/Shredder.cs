@@ -16,7 +16,16 @@ public class Shredder : MonoBehaviour
 			op.Deactivate();
 			ParticleSystem particle = Instantiate(destroyParticle, transform);
 			particle.transform.position = op.GetGameObject().transform.position;
-			particle.GetComponent<ParticleSystemRenderer>().material = gameObject.transform.GetChild(0).GetComponent<MeshRenderer>().material;
+
+			if (gameObject.transform.childCount > 1)
+			{
+				var material = gameObject.transform.GetChild(0).GetComponent<MeshRenderer>()?.material;
+
+				if (material != null)
+				{
+					particle.GetComponent<ParticleSystemRenderer>().material = material;
+				}
+			}
 
 			Vector3 rotation = gameObject.transform.position - transform.position;
 			Quaternion rot = Quaternion.Euler(rotation);
