@@ -9487,6 +9487,7 @@ MonoBehaviour:
   timerDeviation: 3
   upFactor: 1
   explosionParticle: {fileID: 1743931650860486174}
+  sterretjesParticle: {fileID: 1801013545}
 --- !u!1 &2317026322634417485
 GameObject:
   m_ObjectHideFlags: 0

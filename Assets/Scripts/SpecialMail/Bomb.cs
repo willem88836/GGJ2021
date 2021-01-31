@@ -9,6 +9,7 @@ public class Bomb : MailItem
 	[SerializeField] private float timerDeviation;
 	[SerializeField] private float upFactor;
 	[SerializeField] private ParticleSystem explosionParticle; 
+	[SerializeField] private ParticleSystem sterretjesParticle;
 
 	private bool isTicking;
 	private float realExplosionTimer;
@@ -20,6 +21,7 @@ public class Bomb : MailItem
 		isTicking = true;
 		realExplosionTimer = explosionTimer + Random.Range(-timerDeviation, timerDeviation);
 		tick = 0;
+		sterretjesParticle.Play();
 	}
 
 	public override void Deactivate()
@@ -27,6 +29,7 @@ public class Bomb : MailItem
 		base.Deactivate();
 		isTicking = false;
 		tick = 0;
+		sterretjesParticle.Stop();
 	}
 
 	public void Update()
@@ -51,6 +54,7 @@ public class Bomb : MailItem
 					enforcable.EnforceForce(direction, explosionPower);
 				}
 
+				sterretjesParticle.Stop();
 				explosionParticle.Play();
 
 				Deactivate();
