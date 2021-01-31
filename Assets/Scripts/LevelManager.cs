@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -10,8 +9,8 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private AnimationCurve levelScore;
 	[SerializeField] private AnimationCurve mailCurve;
 	[SerializeField] private int maxStrikes = 3;
-	[SerializeField] private int restartLevelDelay;
-	[SerializeField] private int pointCaptureDelay;
+	[SerializeField] private float restartLevelDelay;
+	[SerializeField] private float pointCaptureDelay;
 
 	[Header("References")]
 	[SerializeField] private ScoreController scoreController;
@@ -32,7 +31,6 @@ public class LevelManager : MonoBehaviour
 	private int score;
 	private int strikes;
 	private int level;
-
 
 
 	private void Start()

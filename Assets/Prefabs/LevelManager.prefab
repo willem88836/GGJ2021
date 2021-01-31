@@ -117,7 +117,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   maxStrikes: 3
   restartLevelDelay: 5
-  pointCaptureDelay: 5
+  pointCaptureDelay: 6.5
   scoreController: {fileID: 0}
   timeController: {fileID: 0}
   strikeController: {fileID: 0}
