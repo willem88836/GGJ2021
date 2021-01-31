@@ -24,6 +24,11 @@ public class LevelManager : MonoBehaviour
 	[SerializeField] private bool debugMode;
 	[SerializeField] private KeyCode skipTimeKey;
 
+	AudioSource audioSource;
+
+	[SerializeField] AudioClip ticktock;
+	[SerializeField] AudioClip yay;
+	[SerializeField] AudioClip nay;
 
 	private bool timeIsRunning;
 
@@ -32,9 +37,10 @@ public class LevelManager : MonoBehaviour
 	private int strikes;
 	private int level;
 
-
 	private void Start()
 	{
+		audioSource = GetComponent<AudioSource>();
+
 		foreach(Hatch hatch in hatches)
 		{
 			hatch.setLevelManager(this);
@@ -72,6 +78,12 @@ public class LevelManager : MonoBehaviour
 			{
 				timeController.UpdateTimer(time - currentTime);
 				UpdateScore();
+				if (time - currentTime == 8)
+				{
+					audioSource.clip = ticktock;
+					audioSource.Play();
+				}
+
 				yield return new WaitForSeconds(1);
 
 				if(debugMode && Input.GetKey(skipTimeKey)) break;
@@ -121,6 +133,11 @@ public class LevelManager : MonoBehaviour
 		if (score < levelScore.SafeEvaluate(level)) {
 			DealStrike();
 		}
+		else
+		{
+			audioSource.clip = yay;
+			audioSource.Play();
+		}
 
 		UpdateScore();
 		totalScore += score;
@@ -132,7 +149,8 @@ public class LevelManager : MonoBehaviour
 	{
 		// TODO strike stuff. 
 		Debug.Log("STRIKE!");
-
+		audioSource.clip = nay;
+		audioSource.Play();
 
 		strikes++;
 		strikeController.UpdateStrikes(strikes);
