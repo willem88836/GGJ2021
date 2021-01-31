@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -105,7 +106,9 @@ public class LevelManager : MonoBehaviour
 
 	private void UpdateScore()
 	{
-		scoreController.UpdateScore(score, levelScore.SafeEvaluate(level));
+		int goal = levelScore.SafeEvaluate(level);
+		float ratio = (float)score / goal;
+		scoreController.UpdateScore(totalScore + score, totalScore + goal, ratio);
 	}
 
 	private void LevelStarted()
