@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
 			hatch.setLevelManager(this);
 		}
 
-		BeginGame();
+		//BeginGame();
 	}
 
 	public void BeginGame()
