@@ -4,7 +4,7 @@ public class BlowerParticle : MonoBehaviour
 {
 	ParticleSystem _particle;
 
-    void Start()
+    void Awake()
     {
 		_particle = GetComponent<ParticleSystem>();
     }
