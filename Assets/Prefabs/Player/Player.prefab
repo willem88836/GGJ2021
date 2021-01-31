@@ -1874,7 +1874,8 @@ MonoBehaviour:
   forcePower: 2
   upFactor: 0.3
   animatedVisual: {fileID: 1402358534}
-  particle: {fileID: 3481841759887355105}
+  blowParticle: {fileID: 3481841759887355105}
+  suckParticle: {fileID: 3869127995755199343}
 --- !u!114 &6201950423390399570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2500,7 +2501,7 @@ PrefabInstance:
     - target: {fileID: 7367956810612175787, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7367956810612175790, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
@@ -2520,12 +2521,12 @@ PrefabInstance:
     - target: {fileID: 7367956810612175790, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
       propertyPath: InitialModule.startSpeed.scalar
-      value: 40
+      value: -40
       objectReference: {fileID: 0}
     - target: {fileID: 7367956810612175790, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
       propertyPath: InitialModule.startSpeed.minScalar
-      value: 20
+      value: -20
       objectReference: {fileID: 0}
     - target: {fileID: 7367956810612175790, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
@@ -2755,17 +2756,17 @@ PrefabInstance:
     - target: {fileID: 7367956810612175790, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
       propertyPath: ShapeModule.angle
-      value: 0
+      value: 20.699009
       objectReference: {fileID: 0}
     - target: {fileID: 7367956810612175790, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
       propertyPath: ShapeModule.radius.value
-      value: 9.3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7367956810612175791, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1
+      value: -0.28
       objectReference: {fileID: 0}
     - target: {fileID: 7367956810612175791, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
@@ -2775,7 +2776,7 @@ PrefabInstance:
     - target: {fileID: 7367956810612175791, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.26
+      value: 14.58
       objectReference: {fileID: 0}
     - target: {fileID: 7367956810612175791, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
@@ -2834,6 +2835,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fe34c5255b299047ba597ab2836bc0b, type: 3}
+--- !u!114 &3869127995755199343 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7367956810612175784, guid: 6fe34c5255b299047ba597ab2836bc0b,
+    type: 3}
+  m_PrefabInstance: {fileID: 6048856322793048263}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c61db4c2748be644ad25ab29611b330, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &6201950422081576777
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2849,7 +2862,7 @@ PrefabInstance:
     - target: {fileID: 7367956810612175787, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
       propertyPath: m_Name
-      value: Particle System bladblazer
+      value: 'Particle System bladblazer: blow'
       objectReference: {fileID: 0}
     - target: {fileID: 7367956810612175787, guid: 6fe34c5255b299047ba597ab2836bc0b,
         type: 3}
