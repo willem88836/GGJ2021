@@ -29,6 +29,12 @@ public class LeafBlowerController : MonoBehaviour, IEquipment
     [SerializeField]
     OscillatorAnimation animatedVisual;
 
+	[SerializeField]
+	BlowerParticle blowParticle;
+
+	[SerializeField]
+	BlowerParticle suckParticle;
+
 	private void PullObjects()
     {
         Vector3 inputDirection = (playerVisions.GetMouseWorldPoint() - transform.position).normalized;
@@ -125,10 +131,12 @@ public class LeafBlowerController : MonoBehaviour, IEquipment
         if (key == KeyCode.Mouse0)
         {
             PushObjects();
-        }
+			blowParticle.ToggleParticle(true);
+		}
         else if (key == KeyCode.Mouse1)
         {
             PullObjects();
+			suckParticle.ToggleParticle(true);
         }
 
         animatedVisual.ToggleAnimation(true);
@@ -137,9 +145,11 @@ public class LeafBlowerController : MonoBehaviour, IEquipment
     public void NoFixedAction()
     {
         animatedVisual.ToggleAnimation(false);
-    }
+		blowParticle.ToggleParticle(false);
+		suckParticle.ToggleParticle(false);
+	}
 
-    public void Equip()
+	public void Equip()
     {
         if (!visual.activeSelf) visual.SetActive(true);
     }

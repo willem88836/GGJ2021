@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BlowerParticle : MonoBehaviour
 {
@@ -11,18 +9,11 @@ public class BlowerParticle : MonoBehaviour
 		_particle = GetComponent<ParticleSystem>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-		if (Input.GetKeyDown(KeyCode.Space))
-			ToggleParticle();
-    }
-
-	void ToggleParticle()
+	public void ToggleParticle(bool active)
 	{
-		if (_particle.isPlaying)
-			_particle.Stop();
-		else
+		if (active)
 			_particle.Play();
+		else
+			_particle.Stop();
 	}
 }
