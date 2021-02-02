@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3408657882973455466}
   - component: {fileID: 3408657882973455468}
   - component: {fileID: 3408657882973455464}
-  - component: {fileID: 527280546770995936}
   - component: {fileID: 488959239962114949}
   m_Layer: 0
   m_Name: Cylinder_0_Pink
@@ -66,21 +65,6 @@ CapsuleCollider:
   m_Height: 0.8
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &527280546770995936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3408657882973455465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa582ba9bf3b28a458794f8f5b9de65b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  RigidBody: {fileID: 3408657882973455468}
-  Collider: {fileID: 3408657882973455464}
-  Renderer: {fileID: 528348937704052090}
 --- !u!114 &488959239962114949
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -4,9 +4,10 @@ public static class Utilities
 {
 	public static int SafeEvaluate(this AnimationCurve curve,  int alpha)
 	{
-		if (alpha > curve.keys[curve.length - 1].time)
+		Keyframe lastKey = curve.keys[curve.length - 1];
+		if (alpha > lastKey.time)
 		{
-			return (int) curve.Evaluate(curve.length);
+			return (int) lastKey.value;
 		}
 		return (int) curve.Evaluate(alpha);
 	}

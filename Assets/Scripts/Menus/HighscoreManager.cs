@@ -106,6 +106,7 @@ public class HighscoreManager : MonoBehaviour
 
 	public void SwitchScene(int nextScene)
 	{
+		HighscoreData.CurrentScore = 0;
 		StartCoroutine(SwitchToSceneSequence(nextScene));
 	}
 
